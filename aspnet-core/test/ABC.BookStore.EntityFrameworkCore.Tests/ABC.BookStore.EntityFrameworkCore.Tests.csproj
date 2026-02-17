@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ABC.BookStore</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ABC.BookStore.EntityFrameworkCore\ABC.BookStore.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\ABC.BookStore.Application.Tests\ABC.BookStore.Application.Tests.csproj" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="9.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1.0" />
+  </ItemGroup>
+
+</Project>
