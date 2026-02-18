@@ -1,15 +1,10 @@
-﻿using ABC.BookStore.Commons;
-using ABC.BookStore.EntityFrameworkCore;
-
-namespace ABC.BookStore.Books;
-
+﻿namespace ABC.BookStore.Books;
 public class EfCoreBookRepository : EfCoreCommonRepository<Book>, IBookRepository
 {
     public EfCoreBookRepository(IDbContextProvider<BookStoreDbContext> dbContextProvider)
         : base(dbContextProvider)
     {
     }
-
     public override async Task<IQueryable<Book>> WithDetailsAsync()
     {
         return (await GetQueryableAsync())
