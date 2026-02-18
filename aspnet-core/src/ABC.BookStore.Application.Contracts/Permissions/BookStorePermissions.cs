@@ -15,6 +15,20 @@ public static class BookStorePermissions
         public const string Edit = Default + UpdateConst;
         public const string Delete = Default + DeleteConst;
     }
+    public static class Il
+    {
+        public const string Default = $"{GroupName}.{nameof(Il)}";//BookStore.Il
+        public const string Create = Default + CreateConst;//BookStore.Il.Create
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+    }
+    public static class Ilce
+    {
+        public const string Default = $"{GroupName}.{nameof(Ilce)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+    }
     public static class OzelKod
     {
         public const string Default = $"{GroupName}.{nameof(OzelKod)}";

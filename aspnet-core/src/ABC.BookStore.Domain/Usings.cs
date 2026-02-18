@@ -1,0 +1,16 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using ABC.BookStore.Books;
+global using ABC.BookStore.Commons;
+global using Volo.Abp.Domain.Entities.Auditing;
+global using ABC.BookStore.Extensions;
+global using Volo.Abp;
+global using Volo.Abp.Domain.Services;
+global using ABC.BookStore.Iller;
+global using ABC.BookStore.Exceptions;
+global using ABC.BookStore.OzelKodlar;
+global using System.Linq.Expressions;
+global using Volo.Abp.Domain.Entities;
+global using Volo.Abp.Domain.Repositories;

@@ -3,6 +3,8 @@ public class CreateBookDto : IEntityDto
 {
     public string Kod { get; set; }
     public string Ad { get; set; }
+    public Guid? IlId { get; set; }
+    public Guid? IlceId { get; set; }
     public Guid? OzelKod1Id { get; set; }
     public Guid? OzelKod2Id { get; set; }
     public Guid? OzelKod3Id { get; set; }

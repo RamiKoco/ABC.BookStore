@@ -1,7 +1,4 @@
-﻿using ABC.BookStore.OzelKodlar;
-using System;
-using Volo.Abp.Domain.Entities.Auditing;
-
+﻿using ABC.BookStore.Ilceler;
 namespace ABC.BookStore.Books;
 
 public class Book : FullAuditedAggregateRoot<Guid>
@@ -9,6 +6,8 @@ public class Book : FullAuditedAggregateRoot<Guid>
     public string Kod { get; set; }
     public string Ad { get; set; }
     public BookType Type { get; set; }
+    public Guid? IlId { get; set; }
+    public Guid? IlceId { get; set; }
     public Guid? OzelKod1Id { get; set; }
     public Guid? OzelKod2Id { get; set; }
     public Guid? OzelKod3Id { get; set; }
@@ -19,6 +18,8 @@ public class Book : FullAuditedAggregateRoot<Guid>
     public string Aciklama { get; set; }
     public bool Durum { get; set; }
 
+    public Il Il { get; set; }
+    public Ilce Ilce { get; set; }
     public OzelKod OzelKod1 { get; set; }
     public OzelKod OzelKod2 { get; set; }
     public OzelKod OzelKod3 { get; set; }

@@ -14,8 +14,11 @@ import {
   DevMemoEdit,
   DevDataGrid,
   DevButtonEdit,
+  DevTabEdit,
 } from "../components/dev";
-import OzelKodSelectModal from "../pages/OzelKodSelectModal";
+import OzelKodSelectModal from "./OzelKodSelectModal";
+import IlSelectModal from "./IlSelectModal";
+import IlceSelectModal from "./IlceSelectModal";
 
 interface Book {
   id: string;
@@ -26,6 +29,10 @@ interface Book {
   price: number;
   aciklama: string;
   durum: boolean;
+  ilId: string | null;
+  ilAdi: string | null;
+  ilceId: string | null;
+  ilceAdi: string | null;
   ozelKod1Id: string | null;
   ozelKod2Id: string | null;
   ozelKod3Id: string | null;
@@ -58,6 +65,8 @@ const emptyForm = {
   price: 0,
   aciklama: "",
   durum: true,
+  ilId: null as string | null,
+  ilceId: null as string | null,
   ozelKod1Id: null as string | null,
   ozelKod2Id: null as string | null,
   ozelKod3Id: null as string | null,
@@ -76,12 +85,17 @@ export default function BooksPage() {
   const [form, setForm] = useState({ ...emptyForm });
   const [durumFilter, setDurumFilter] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [activeTab, setActiveTab] = useState("genel");
 
   // OzelKod modal state
   const [ozelKodModalVisible, setOzelKodModalVisible] = useState(false);
   const [activeKodTuru, setActiveKodTuru] = useState<number>(1);
 
-  // OzelKod display names (form'da göstermek için)
+  // İl / İlçe modal state
+  const [ilModalVisible, setIlModalVisible] = useState(false);
+  const [ilceModalVisible, setIlceModalVisible] = useState(false);
+
+  // Display names
   const [ozelKodNames, setOzelKodNames] = useState<Record<string, string>>({
     ozelKod1: "",
     ozelKod2: "",
@@ -89,6 +103,8 @@ export default function BooksPage() {
     ozelKod4: "",
     ozelKod5: "",
   });
+  const [ilAdi, setIlAdi] = useState("");
+  const [ilceAdi, setIlceAdi] = useState("");
 
   const fetchBooks = async () => {
     setLoading(true);
@@ -132,6 +148,9 @@ export default function BooksPage() {
       ozelKod4: "",
       ozelKod5: "",
     });
+    setIlAdi("");
+    setIlceAdi("");
+    setActiveTab("genel");
     setDrawerOpen(true);
   };
 
@@ -148,12 +167,16 @@ export default function BooksPage() {
         price: detail.price,
         aciklama: detail.aciklama || "",
         durum: detail.durum,
+        ilId: detail.ilId,
+        ilceId: detail.ilceId,
         ozelKod1Id: detail.ozelKod1Id,
         ozelKod2Id: detail.ozelKod2Id,
         ozelKod3Id: detail.ozelKod3Id,
         ozelKod4Id: detail.ozelKod4Id,
         ozelKod5Id: detail.ozelKod5Id,
       });
+      setIlAdi(detail.ilAdi || "");
+      setIlceAdi(detail.ilceAdi || "");
       setOzelKodNames({
         ozelKod1: detail.ozelKod1Adi || "",
         ozelKod2: detail.ozelKod2Adi || "",
@@ -161,6 +184,7 @@ export default function BooksPage() {
         ozelKod4: detail.ozelKod4Adi || "",
         ozelKod5: detail.ozelKod5Adi || "",
       });
+      setActiveTab("genel");
       setDrawerOpen(true);
     } catch (error) {
       console.error("Kitap detayı yüklenemedi:", error);
@@ -203,17 +227,47 @@ export default function BooksPage() {
     setForm({ ...emptyForm });
   };
 
-  // OzelKod modal açma
+  // İl seçimi
+  const handleIlSelect = (item: { id: string; ad: string }) => {
+    setForm({ ...form, ilId: item.id, ilceId: null });
+    setIlAdi(item.ad);
+    setIlceAdi("");
+    setIlModalVisible(false);
+  };
+
+  const clearIl = () => {
+    setForm({ ...form, ilId: null, ilceId: null });
+    setIlAdi("");
+    setIlceAdi("");
+  };
+
+  // İlçe seçimi
+  const handleIlceSelect = (item: { id: string; ad: string }) => {
+    setForm({ ...form, ilceId: item.id });
+    setIlceAdi(item.ad);
+    setIlceModalVisible(false);
+  };
+
+  const clearIlce = () => {
+    setForm({ ...form, ilceId: null });
+    setIlceAdi("");
+  };
+
+  const openIlceModal = () => {
+    if (!form.ilId) {
+      alert("Lütfen önce bir İl seçin.");
+      return;
+    }
+    setIlceModalVisible(true);
+  };
+
+  // OzelKod
   const openOzelKodModal = (kodTuru: number) => {
     setActiveKodTuru(kodTuru);
     setOzelKodModalVisible(true);
   };
 
-  // OzelKod seçildiğinde
-  const handleOzelKodSelect = (item: {
-    id: string;
-    ad: string;
-  }) => {
+  const handleOzelKodSelect = (item: { id: string; ad: string }) => {
     const idField = `ozelKod${activeKodTuru}Id` as keyof typeof form;
     const nameField = `ozelKod${activeKodTuru}` as keyof typeof ozelKodNames;
 
@@ -222,7 +276,6 @@ export default function BooksPage() {
     setOzelKodModalVisible(false);
   };
 
-  // OzelKod temizleme
   const clearOzelKod = (kodTuru: number) => {
     const idField = `ozelKod${kodTuru}Id` as keyof typeof form;
     const nameField = `ozelKod${kodTuru}` as keyof typeof ozelKodNames;
@@ -256,86 +309,145 @@ export default function BooksPage() {
       width: 100,
       render: (v: number) => `${v.toLocaleString("tr-TR")} ₺`,
     },
+    { title: "İl", dataIndex: "ilAdi", key: "ilAdi", width: 120 },
+    { title: "İlçe", dataIndex: "ilceAdi", key: "ilceAdi", width: 120 },
     { title: "Açıklama", dataIndex: "aciklama", key: "aciklama" },
+  ];
+
+  // Tab içerikleri
+  const tabItems = [
+    {
+      key: "genel",
+      label: "Genel Bilgiler",
+      children: (
+        <DevGridLayout columnCount={2} columnSpacing="16px" rowSpacing="0px">
+          <DevGridLayoutItem>
+            <DevTextEdit
+              label="Kod"
+              value={form.kod}
+              onChange={(v) => setForm({ ...form, kod: v })}
+              required
+              maxLength={20}
+            />
+          </DevGridLayoutItem>
+          <DevGridLayoutItem>
+            <div style={{ display: "flex", justifyContent: "flex-end", paddingTop: 24 }}>
+              <DevCheckEdit
+                value={form.durum}
+                onChange={(v) => setForm({ ...form, durum: v })}
+                checkedText="Aktif"
+                uncheckedText="Pasif"
+              />
+            </div>
+          </DevGridLayoutItem>
+          <DevGridLayoutItem>
+            <DevTextEdit
+              label="Ad"
+              value={form.ad}
+              onChange={(v) => setForm({ ...form, ad: v })}
+              required
+              maxLength={128}
+            />
+          </DevGridLayoutItem>
+          <DevGridLayoutItem>
+            <DevCurrencyEdit
+              label="Fiyat"
+              value={form.price}
+              onChange={(v) => setForm({ ...form, price: v })}
+              required
+            />
+          </DevGridLayoutItem>
+          <DevGridLayoutItem>
+            <DevDateEdit
+              label="Yayın Tarihi"
+              value={form.publishDate}
+              onChange={(v) => setForm({ ...form, publishDate: v })}
+              required
+            />
+          </DevGridLayoutItem>
+          <DevGridLayoutItem>
+            <DevComboBoxEdit
+              label="Tür"
+              value={form.type}
+              onChange={(v) => setForm({ ...form, type: v as number })}
+              options={bookTypeOptions}
+              required
+            />
+          </DevGridLayoutItem>
+        </DevGridLayout>
+      ),
+    },
+    {
+      key: "adres",
+      label: "Adres",
+      children: (
+        <DevGridLayout columnCount={2} columnSpacing="16px" rowSpacing="0px">
+          <DevGridLayoutItem>
+            <DevButtonEdit
+              label="İl"
+              value={ilAdi}
+              onButtonClick={() => setIlModalVisible(true)}
+              onClear={clearIl}
+              placeholder="İl Seçin"
+              readOnly
+            />
+          </DevGridLayoutItem>
+          <DevGridLayoutItem>
+            <DevButtonEdit
+              label="İlçe"
+              value={ilceAdi}
+              onButtonClick={openIlceModal}
+              onClear={clearIlce}
+              placeholder={form.ilId ? "İlçe Seçin" : "Önce İl Seçin"}
+              readOnly
+              disabled={!form.ilId}
+            />
+          </DevGridLayoutItem>
+        </DevGridLayout>
+      ),
+    },
+    {
+      key: "ozelKodlar",
+      label: "Özel Kodlar",
+      children: (
+        <DevGridLayout columnCount={1} columnSpacing="16px" rowSpacing="0px">
+          {[1, 2, 3, 4, 5].map((kodTuru) => (
+            <DevGridLayoutItem key={`ozelKod${kodTuru}`}>
+              <DevButtonEdit
+                label={`Özel Kod-${kodTuru}`}
+                value={ozelKodNames[`ozelKod${kodTuru}` as keyof typeof ozelKodNames]}
+                onButtonClick={() => openOzelKodModal(kodTuru)}
+                onClear={() => clearOzelKod(kodTuru)}
+                placeholder="Kart Seçin"
+                readOnly
+              />
+            </DevGridLayoutItem>
+          ))}
+        </DevGridLayout>
+      ),
+    },
+    {
+      key: "aciklama",
+      label: "Açıklama",
+      children: (
+        <DevMemoEdit
+          label="Açıklama"
+          value={form.aciklama}
+          onChange={(v) => setForm({ ...form, aciklama: v })}
+          maxLength={500}
+        />
+      ),
+    },
   ];
 
   // Edit Form
   const editForm = (
     <Form layout="vertical">
-      <DevGridLayout columnCount={2} columnSpacing="16px" rowSpacing="0px">
-        <DevGridLayoutItem>
-          <DevTextEdit
-            label="Kod"
-            value={form.kod}
-            onChange={(v) => setForm({ ...form, kod: v })}
-            required
-            maxLength={20}
-          />
-        </DevGridLayoutItem>
-        <DevGridLayoutItem>
-          <DevTextEdit
-            label="Ad"
-            value={form.ad}
-            onChange={(v) => setForm({ ...form, ad: v })}
-            required
-            maxLength={128}
-          />
-        </DevGridLayoutItem>
-        <DevGridLayoutItem>
-          <DevComboBoxEdit
-            label="Tür"
-            value={form.type}
-            onChange={(v) => setForm({ ...form, type: v as number })}
-            options={bookTypeOptions}
-            required
-          />
-        </DevGridLayoutItem>
-        <DevGridLayoutItem>
-          <DevDateEdit
-            label="Yayın Tarihi"
-            value={form.publishDate}
-            onChange={(v) => setForm({ ...form, publishDate: v })}
-            required
-          />
-        </DevGridLayoutItem>
-        <DevGridLayoutItem>
-          <DevCurrencyEdit
-            label="Fiyat"
-            value={form.price}
-            onChange={(v) => setForm({ ...form, price: v })}
-            required
-          />
-        </DevGridLayoutItem>
-        <DevGridLayoutItem>
-          <DevCheckEdit
-            label="Durum"
-            value={form.durum}
-            onChange={(v) => setForm({ ...form, durum: v })}
-          />
-        </DevGridLayoutItem>
-        <DevGridLayoutItem columnSpan={2}>
-          <DevMemoEdit
-            label="Açıklama"
-            value={form.aciklama}
-            onChange={(v) => setForm({ ...form, aciklama: v })}
-            maxLength={500}
-          />
-        </DevGridLayoutItem>
-
-        {/* Özel Kod Alanları */}
-        {[1, 2, 3, 4, 5].map((kodTuru) => (
-          <DevGridLayoutItem key={`ozelKod${kodTuru}`} columnSpan={2}>
-            <DevButtonEdit
-              label={`Özel Kod-${kodTuru}`}
-              value={ozelKodNames[`ozelKod${kodTuru}` as keyof typeof ozelKodNames]}
-              onButtonClick={() => openOzelKodModal(kodTuru)}
-              onClear={() => clearOzelKod(kodTuru)}
-              placeholder="Kart Seçin"
-              readOnly
-            />
-          </DevGridLayoutItem>
-        ))}
-      </DevGridLayout>
+      <DevTabEdit
+        items={tabItems}
+        activeKey={activeTab}
+        onChange={setActiveTab}
+      />
     </Form>
   );
 
@@ -386,6 +498,22 @@ export default function BooksPage() {
           />
         </Card>
       </DevListPageLayout>
+
+      {/* İl Seçim Modalı */}
+      <IlSelectModal
+        visible={ilModalVisible}
+        onSelect={handleIlSelect}
+        onCancel={() => setIlModalVisible(false)}
+      />
+
+      {/* İlçe Seçim Modalı */}
+      <IlceSelectModal
+        visible={ilceModalVisible}
+        ilId={form.ilId}
+        title="İlçe Kartları"
+        onSelect={handleIlceSelect}
+        onCancel={() => setIlceModalVisible(false)}
+      />
 
       {/* Özel Kod Seçim Modalı */}
       <OzelKodSelectModal

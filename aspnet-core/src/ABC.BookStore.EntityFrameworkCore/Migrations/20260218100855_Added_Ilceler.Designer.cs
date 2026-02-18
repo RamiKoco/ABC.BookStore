@@ -4,6 +4,7 @@ using ABC.BookStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace ABC.BookStore.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260218100855_Added_Ilceler")]
+    partial class Added_Ilceler
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,9 +76,6 @@ namespace ABC.BookStore.Migrations
                     b.Property<Guid?>("IlId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("IlceId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -122,8 +122,6 @@ namespace ABC.BookStore.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IlId");
-
-                    b.HasIndex("IlceId");
 
                     b.HasIndex("Kod");
 
@@ -2099,13 +2097,9 @@ namespace ABC.BookStore.Migrations
 
             modelBuilder.Entity("ABC.BookStore.Books.Book", b =>
                 {
-                    b.HasOne("ABC.BookStore.Iller.Il", "Il")
+                    b.HasOne("ABC.BookStore.Iller.Il", null)
                         .WithMany("Books")
                         .HasForeignKey("IlId");
-
-                    b.HasOne("ABC.BookStore.Ilceler.Ilce", "Ilce")
-                        .WithMany()
-                        .HasForeignKey("IlceId");
 
                     b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
                         .WithMany("OzelKod1Book")
@@ -2131,10 +2125,6 @@ namespace ABC.BookStore.Migrations
                         .WithMany("OzelKod5Book")
                         .HasForeignKey("OzelKod5Id")
                         .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("Il");
-
-                    b.Navigation("Ilce");
 
                     b.Navigation("OzelKod1");
 

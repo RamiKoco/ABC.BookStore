@@ -1,6 +1,4 @@
-﻿using ABC.BookStore.Cofigurations;
-using ABC.BookStore.OzelKodlar;
-using Volo.Abp.OpenIddict.EntityFrameworkCore;
+﻿using ABC.BookStore.Ilceler;
 
 namespace ABC.BookStore.EntityFrameworkCore;
 
@@ -13,7 +11,9 @@ public class BookStoreDbContext :
     ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
-    public DbSet<Books.Book> Books { get; set; }
+    public DbSet<Book> Books { get; set; }
+    public DbSet<Il> Iller { get; set; }
+    public DbSet<Ilce> Ilceler { get; set; }
     public DbSet<OzelKod> OzelKodlar { get; set; }
     #region Entities from the modules
 
@@ -66,6 +66,8 @@ public class BookStoreDbContext :
 
         /* Configure your own tables/entities inside here */
         builder.ConfigureBook();
+        builder.ConfigureIl();
+        builder.ConfigureIlce();
         builder.ConfigureOzelKod();
         
     }

@@ -4,6 +4,8 @@ public class ListBookDto : EntityDto<Guid>
 {
     public string Kod { get; set; }
     public string Ad { get; set; }
+    public string IlAdi { get; set; }
+    public string IlceAdi { get; set; }
     public string OzelKod1Adi { get; set; }
     public string OzelKod2Adi { get; set; }
     public string OzelKod3Adi { get; set; }

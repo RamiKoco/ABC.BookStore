@@ -1,6 +1,5 @@
 ﻿using ABC.BookStore.Commons;
 using ABC.BookStore.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore;
 
 namespace ABC.BookStore.Books;
 
@@ -18,6 +17,8 @@ public class EfCoreBookRepository : EfCoreCommonRepository<Book>, IBookRepositor
             .Include(x => x.OzelKod2)
             .Include(x => x.OzelKod3)
             .Include(x => x.OzelKod4)
-            .Include(x => x.OzelKod5);
+            .Include(x => x.OzelKod5)
+            .Include(x => x.Il)
+            .Include(x => x.Ilce); 
     }
 }

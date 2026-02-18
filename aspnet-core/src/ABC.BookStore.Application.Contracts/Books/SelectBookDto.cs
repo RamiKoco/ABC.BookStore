@@ -3,6 +3,10 @@ public class SelectBookDto : EntityDto<Guid>
 {
     public string Kod { get; set; }
     public string Ad { get; set; }
+    public Guid? IlId { get; set; }
+    public string IlAdi { get; set; }
+    public Guid? IlceId { get; set; }
+    public string IlceAdi { get; set; }
     public Guid? OzelKod1Id { get; set; }
     public string OzelKod1Adi { get; set; }
     public Guid? OzelKod2Id { get; set; }

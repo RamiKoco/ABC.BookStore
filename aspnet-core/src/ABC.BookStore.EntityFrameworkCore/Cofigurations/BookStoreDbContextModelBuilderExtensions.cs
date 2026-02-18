@@ -1,9 +1,4 @@
-﻿using ABC.BookStore.Books;
-using ABC.BookStore.Consts;
-using ABC.BookStore.OzelKodlar;
-using Microsoft.EntityFrameworkCore;
-using System.Data;
-using Volo.Abp.EntityFrameworkCore.Modeling;
+﻿using ABC.BookStore.Ilceler;
 
 namespace ABC.BookStore.Cofigurations;
 public static class BookStoreDbContextModelBuilderExtensions
@@ -71,6 +66,76 @@ public static class BookStoreDbContextModelBuilderExtensions
             b.HasOne(x => x.OzelKod5)
                .WithMany(x => x.OzelKod5Book)
                .OnDelete(DeleteBehavior.NoAction);
+        });
+    }
+    public static void ConfigureIl(this ModelBuilder builder)
+    {
+        builder.Entity<Il>(b =>
+        {
+            b.ToTable(BookStoreConsts.DbTablePrefix + "Iller", BookStoreConsts.DbSchema);
+            b.ConfigureByConvention();
+
+            //properties
+            b.Property(x => x.Kod)
+                .IsRequired()
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxKodLength);
+
+            b.Property(x => x.Ad)
+                .IsRequired()
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxAdLength);
+
+            //b.Property(x => x.UlkeId)
+            //   .IsRequired()
+            //   .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x => x.Durum)
+                .HasColumnType(SqlDbType.Bit.ToString());
+
+            //indexs
+            b.HasIndex(x => x.Kod);
+
+            //relations
+            //b.HasOne(x => x.Ulke)
+            //   .WithMany(x => x.Iller)
+            //   .OnDelete(DeleteBehavior.Cascade);
+
+        });
+    }
+    public static void ConfigureIlce(this ModelBuilder builder)
+    {
+        builder.Entity<Ilce>(b =>
+        {
+            b.ToTable(BookStoreConsts.DbTablePrefix + "Ilceler", BookStoreConsts.DbSchema);
+            b.ConfigureByConvention();
+
+            //properties
+            b.Property(x => x.Kod)
+                .IsRequired()
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxKodLength);
+
+            b.Property(x => x.Ad)
+                .IsRequired()
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxAdLength);
+
+            b.Property(x => x.IlId)
+                .IsRequired()
+                .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x => x.Durum)
+                .HasColumnType(SqlDbType.Bit.ToString());
+
+            //indexs
+            b.HasIndex(x => x.Kod);
+
+            //relations
+            b.HasOne(x => x.Il)
+                .WithMany(x => x.Ilceler)
+                .OnDelete(DeleteBehavior.Cascade);
+
         });
     }
     public static void ConfigureOzelKod(this ModelBuilder builder)

@@ -4,6 +4,7 @@ using ABC.BookStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace ABC.BookStore.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260218084848_Added_Iller")]
+    partial class Added_Iller
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,9 +76,6 @@ namespace ABC.BookStore.Migrations
                     b.Property<Guid?>("IlId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("IlceId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -123,8 +123,6 @@ namespace ABC.BookStore.Migrations
 
                     b.HasIndex("IlId");
 
-                    b.HasIndex("IlceId");
-
                     b.HasIndex("Kod");
 
                     b.HasIndex("OzelKod1Id");
@@ -138,78 +136,6 @@ namespace ABC.BookStore.Migrations
                     b.HasIndex("OzelKod5Id");
 
                     b.ToTable("AppBooks", (string)null);
-                });
-
-            modelBuilder.Entity("ABC.BookStore.Ilceler.Ilce", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Ad")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("VarChar");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("DeleterId");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DeletionTime");
-
-                    b.Property<bool>("Durum")
-                        .HasColumnType("Bit");
-
-                    b.Property<string>("ExtraProperties")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<Guid>("IlId")
-                        .HasColumnType("UniqueIdentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
-
-                    b.Property<string>("Kod")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("VarChar");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IlId");
-
-                    b.HasIndex("Kod");
-
-                    b.ToTable("AppIlceler", (string)null);
                 });
 
             modelBuilder.Entity("ABC.BookStore.Iller.Il", b =>
@@ -2099,13 +2025,9 @@ namespace ABC.BookStore.Migrations
 
             modelBuilder.Entity("ABC.BookStore.Books.Book", b =>
                 {
-                    b.HasOne("ABC.BookStore.Iller.Il", "Il")
+                    b.HasOne("ABC.BookStore.Iller.Il", null)
                         .WithMany("Books")
                         .HasForeignKey("IlId");
-
-                    b.HasOne("ABC.BookStore.Ilceler.Ilce", "Ilce")
-                        .WithMany()
-                        .HasForeignKey("IlceId");
 
                     b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
                         .WithMany("OzelKod1Book")
@@ -2132,10 +2054,6 @@ namespace ABC.BookStore.Migrations
                         .HasForeignKey("OzelKod5Id")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.Navigation("Il");
-
-                    b.Navigation("Ilce");
-
                     b.Navigation("OzelKod1");
 
                     b.Navigation("OzelKod2");
@@ -2145,17 +2063,6 @@ namespace ABC.BookStore.Migrations
                     b.Navigation("OzelKod4");
 
                     b.Navigation("OzelKod5");
-                });
-
-            modelBuilder.Entity("ABC.BookStore.Ilceler.Ilce", b =>
-                {
-                    b.HasOne("ABC.BookStore.Iller.Il", "Il")
-                        .WithMany("Ilceler")
-                        .HasForeignKey("IlId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Il");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
@@ -2303,8 +2210,6 @@ namespace ABC.BookStore.Migrations
             modelBuilder.Entity("ABC.BookStore.Iller.Il", b =>
                 {
                     b.Navigation("Books");
-
-                    b.Navigation("Ilceler");
                 });
 
             modelBuilder.Entity("ABC.BookStore.OzelKodlar.OzelKod", b =>

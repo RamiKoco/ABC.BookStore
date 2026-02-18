@@ -175,11 +175,8 @@ export default function DevDataGrid<T extends Record<string, any> = any>({
       {/* Toolbar */}
       {showToolbar && (
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12, alignItems: "center" }}>
-          <div>
+          <Space align="center">
             {title && <Typography.Title level={5} style={{ margin: 0 }}>{title}</Typography.Title>}
-          </div>
-          <Space>
-            {extraToolbar}
             {toolbarFilterVisible && (
               <Button
                 icon={<FilterOutlined />}
@@ -207,6 +204,9 @@ export default function DevDataGrid<T extends Record<string, any> = any>({
                 Yeni
               </Button>
             )}
+          </Space>
+          <Space>
+            {extraToolbar}
           </Space>
         </div>
       )}
