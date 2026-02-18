@@ -1,7 +1,4 @@
-﻿using ABC.BookStore.CommonDtos;
-using Volo.Abp.Application.Dtos;
-
-namespace ABC.BookStore.Books;
+﻿namespace ABC.BookStore.Books;
 
 public class BookListParameterDto : PagedResultRequestDto, IDurum, IEntityDto
 {

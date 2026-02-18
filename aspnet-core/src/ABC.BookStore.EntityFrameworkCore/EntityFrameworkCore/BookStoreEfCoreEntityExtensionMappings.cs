@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.Identity;
-using Volo.Abp.ObjectExtending;
-using Volo.Abp.Threading;
-
-namespace ABC.BookStore.EntityFrameworkCore;
+﻿namespace ABC.BookStore.EntityFrameworkCore;
 
 public static class BookStoreEfCoreEntityExtensionMappings
 {

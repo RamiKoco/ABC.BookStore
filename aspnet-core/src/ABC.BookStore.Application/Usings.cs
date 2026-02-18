@@ -1,0 +1,11 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Threading.Tasks;
+global using Microsoft.AspNetCore.Authorization;
+global using ABC.BookStore.CommonDtos;
+global using ABC.BookStore.Permissions;
+global using ABC.BookStore.Books;
+global using ABC.BookStore.OzelKodlar;
+global using AutoMapper;
+global using Volo.Abp.Application.Dtos;
+global using Volo.Abp.Domain.Repositories;

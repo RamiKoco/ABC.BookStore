@@ -1,13 +1,4 @@
-﻿using ABC.BookStore.CommonDtos;
-using ABC.BookStore.Permissions;
-using Microsoft.AspNetCore.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Domain.Repositories;
-
-namespace ABC.BookStore.Books;
+﻿namespace ABC.BookStore.Books;
 
 [Authorize(BookStorePermissions.Books.Default)]
 public class BookAppService : BookStoreAppService, IBookAppService

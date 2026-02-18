@@ -1,19 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.Modeling;
-using Volo.Abp.FeatureManagement.EntityFrameworkCore;
-using Volo.Abp.Identity;
-using Volo.Abp.Identity.EntityFrameworkCore;
+﻿using ABC.BookStore.Cofigurations;
+using ABC.BookStore.OzelKodlar;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
-using Volo.Abp.PermissionManagement.EntityFrameworkCore;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.TenantManagement;
-using Volo.Abp.TenantManagement.EntityFrameworkCore;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace ABC.BookStore.EntityFrameworkCore;
 
@@ -27,6 +14,7 @@ public class BookStoreDbContext :
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<Books.Book> Books { get; set; }
+    public DbSet<OzelKod> OzelKodlar { get; set; }
     #region Entities from the modules
 
     /* Notice: We only implemented IIdentityDbContext and ITenantManagementDbContext
@@ -77,21 +65,8 @@ public class BookStoreDbContext :
         builder.ConfigureTenantManagement();
 
         /* Configure your own tables/entities inside here */
-
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(BookStoreConsts.DbTablePrefix + "YourEntities", BookStoreConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
-        /* Configure your own tables/entities inside here */
-        builder.Entity<Books.Book>(b =>
-        {
-            b.ToTable(BookStoreConsts.DbTablePrefix + "Books", BookStoreConsts.DbSchema);
-            b.ConfigureByConvention();
-            b.Property(x => x.Kod).IsRequired().HasMaxLength(20);
-            b.Property(x => x.Ad).IsRequired().HasMaxLength(128);
-            b.Property(x => x.Aciklama).HasMaxLength(500);
-        });
+        builder.ConfigureBook();
+        builder.ConfigureOzelKod();
+        
     }
 }
