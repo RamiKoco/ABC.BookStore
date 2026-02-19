@@ -27,3 +27,7 @@ global using ABC.BookStore.Iller;
 global using ABC.BookStore.OzelKodlar;
 global using ABC.BookStore.Cofigurations;
 global using Volo.Abp.OpenIddict.EntityFrameworkCore;
+global using ABC.BookStore.Bankalar;
+global using ABC.BookStore.BankaSubeler;
+global using ABC.BookStore.Ilceler;
+global using ABC.BookStore.Kisiler;

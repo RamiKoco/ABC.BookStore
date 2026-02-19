@@ -16,3 +16,5 @@ global using Volo.Abp.Domain.Entities;
 global using Volo.Abp.Domain.Repositories;
 global using ABC.BookStore.BankaSubeler;
 global using ABC.BookStore.Bankalar;
+global using ABC.BookStore.Ilceler;
+global using ABC.BookStore.Kisiler;

@@ -1,4 +1,5 @@
-﻿namespace ABC.BookStore.OzelKodlar;
+﻿
+namespace ABC.BookStore.OzelKodlar;
 public class OzelKod : FullAuditedAggregateRoot<Guid>
 {
     public string Kod { get; set; }
@@ -25,5 +26,8 @@ public class OzelKod : FullAuditedAggregateRoot<Guid>
     public ICollection<Book> OzelKod3Book { get; set; }
     public ICollection<Book> OzelKod4Book { get; set; }
     public ICollection<Book> OzelKod5Book { get; set; }
+
+    public ICollection<Kisi> OzelKod1Kisiler { get; set; }
+    public ICollection<Kisi> OzelKod2Kisiler { get; set; }
 
 }

@@ -1,8 +1,4 @@
-﻿using ABC.BookStore.Bankalar;
-using ABC.BookStore.BankaSubeler;
-using ABC.BookStore.Ilceler;
-
-namespace ABC.BookStore.EntityFrameworkCore;
+﻿namespace ABC.BookStore.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
@@ -18,6 +14,7 @@ public class BookStoreDbContext :
     public DbSet<Book> Books { get; set; }
     public DbSet<Il> Iller { get; set; }
     public DbSet<Ilce> Ilceler { get; set; }
+    public DbSet<Kisi> Kisiler { get; set; }
     public DbSet<OzelKod> OzelKodlar { get; set; }
     #region Entities from the modules
 
@@ -74,6 +71,7 @@ public class BookStoreDbContext :
         builder.ConfigureBook();
         builder.ConfigureIl();
         builder.ConfigureIlce();
+        builder.ConfigureKisi();
         builder.ConfigureOzelKod();
         
     }

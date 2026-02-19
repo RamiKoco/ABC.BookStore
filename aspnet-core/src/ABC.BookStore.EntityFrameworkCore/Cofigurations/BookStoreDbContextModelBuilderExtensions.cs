@@ -1,8 +1,4 @@
-﻿using ABC.BookStore.Bankalar;
-using ABC.BookStore.BankaSubeler;
-using ABC.BookStore.Ilceler;
-
-namespace ABC.BookStore.Cofigurations;
+﻿namespace ABC.BookStore.Cofigurations;
 public static class BookStoreDbContextModelBuilderExtensions
 {
     public static void ConfigureBanka(this ModelBuilder builder)
@@ -276,6 +272,106 @@ public static class BookStoreDbContextModelBuilderExtensions
                 .WithMany(x => x.Ilceler)
                 .OnDelete(DeleteBehavior.Cascade);
 
+        });
+    }
+    public static void ConfigureKisi(this ModelBuilder builder)
+    {
+        builder.Entity<Kisi>(b =>
+        {
+            b.ToTable(BookStoreConsts.DbTablePrefix + "Kisiler", BookStoreConsts.DbSchema);
+            b.ConfigureByConvention();
+
+            //properties
+            b.Property(x => x.Kod)
+                .IsRequired()
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxKodLength);
+
+            b.Property(x => x.Ad)
+                .IsRequired()
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxAdLength);
+
+            b.Property(x => x.Soyad)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxAdLength);          
+
+            b.Property(x => x.MedeniHal)
+                .HasColumnType(SqlDbType.TinyInt.ToString());          
+
+            b.Property(x => x.IlId)
+                 .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x => x.IlceId)
+              .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x => x.AcikAdres)
+               .HasColumnType(SqlDbType.VarChar.ToString())
+               .HasMaxLength(EntityConsts.MaxAdLength);           
+
+            b.Property(x => x.TCNo)
+              .HasColumnType(SqlDbType.VarChar.ToString())
+              .HasMaxLength(EntityConsts.MaxTCNoLength);           
+
+            b.Property(x => x.Image)
+             .HasColumnType("varchar(max)")
+             .HasMaxLength(EntityConsts.MaxImageLength);
+
+            b.Property(x => x.Telefon)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxTelefonLength);           
+
+            b.Property(x => x.Email)
+               .HasColumnType(SqlDbType.VarChar.ToString())
+               .HasMaxLength(EntityConsts.MaxEmailLength);           
+
+            b.Property(x => x.DogumTarihi)
+               .IsRequired()
+               .HasColumnType(SqlDbType.Date.ToString());
+
+            b.Property(x => x.DogumYeri)
+              .HasColumnType(SqlDbType.VarChar.ToString())
+              .HasMaxLength(EntityConsts.MaxAdLength);
+
+            b.Property(x => x.Cinsiyet)
+             .HasColumnType(SqlDbType.TinyInt.ToString());
+
+            b.Property(x => x.KanGrubu)
+              .HasColumnType(SqlDbType.TinyInt.ToString());
+
+            b.Property(x => x.OzelKod1Id)
+               .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x => x.OzelKod2Id)
+                .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
+
+            b.Property(x => x.Aciklama)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConsts.MaxAciklamaLength);
+
+            b.Property(x => x.Durum)
+                .HasColumnType(SqlDbType.Bit.ToString());
+
+            //indexs
+            b.HasIndex(x => x.Kod);
+
+            //relations     
+
+            b.HasOne(x => x.Il)
+              .WithMany(x => x.Kisiler)
+              .OnDelete(DeleteBehavior.NoAction);
+
+            b.HasOne(x => x.Ilce)
+              .WithMany(x => x.Kisiler)
+              .OnDelete(DeleteBehavior.NoAction);
+
+            b.HasOne(x => x.OzelKod1)
+              .WithMany(x => x.OzelKod1Kisiler)
+              .OnDelete(DeleteBehavior.NoAction);
+
+            b.HasOne(x => x.OzelKod2)
+                .WithMany(x => x.OzelKod2Kisiler)
+                .OnDelete(DeleteBehavior.NoAction);
         });
     }
     public static void ConfigureOzelKod(this ModelBuilder builder)

@@ -61,6 +61,17 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
             L($"{localizePrefix}:{nameof(BookStorePermissions.Ilce)}{BookStorePermissions.UpdateConst}"));
         ilce.AddChild(BookStorePermissions.Ilce.Delete,
             L($"{localizePrefix}:{nameof(BookStorePermissions.Ilce)}{BookStorePermissions.DeleteConst}"));
+        //kisi
+        var kisi = mainGroup.AddPermission(BookStorePermissions.Kisi.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Kisi)}"));
+
+        kisi.AddChild(BookStorePermissions.Kisi.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Kisi)}{BookStorePermissions.CreateConst}"));
+        kisi.AddChild(BookStorePermissions.Kisi.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Kisi)}{BookStorePermissions.UpdateConst}"));
+        kisi.AddChild(BookStorePermissions.Kisi.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Kisi)}{BookStorePermissions.DeleteConst}"));
+
         //OzelKod
         var ozelKod = mainGroup.AddPermission(BookStorePermissions.OzelKod.Default,
             L($"{localizePrefix}:{nameof(BookStorePermissions.OzelKod)}"));

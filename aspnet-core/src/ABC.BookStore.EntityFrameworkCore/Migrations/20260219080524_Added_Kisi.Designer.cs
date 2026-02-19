@@ -4,6 +4,7 @@ using ABC.BookStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace ABC.BookStore.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260219080524_Added_Kisi")]
+    partial class Added_Kisi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -538,15 +541,15 @@ namespace ABC.BookStore.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ExtraProperties");
 
-                    b.Property<Guid?>("IlId")
+                    b.Property<Guid>("IlId")
                         .HasColumnType("UniqueIdentifier");
 
-                    b.Property<Guid?>("IlceId")
+                    b.Property<Guid>("IlceId")
                         .HasColumnType("UniqueIdentifier");
 
                     b.Property<string>("Image")
-                        .HasMaxLength(500000)
-                        .HasColumnType("varchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -2573,12 +2576,14 @@ namespace ABC.BookStore.Migrations
                     b.HasOne("ABC.BookStore.Iller.Il", "Il")
                         .WithMany("Kisiler")
                         .HasForeignKey("IlId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("ABC.BookStore.Ilceler.Ilce", "Ilce")
                         .WithMany("Kisiler")
                         .HasForeignKey("IlceId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
                         .WithMany("OzelKod1Kisiler")

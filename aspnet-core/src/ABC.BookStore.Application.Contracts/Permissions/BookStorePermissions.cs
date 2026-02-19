@@ -45,6 +45,13 @@ public static class BookStorePermissions
         public const string Update = Default + UpdateConst;
         public const string Delete = Default + DeleteConst;
     }
+    public static class Kisi
+    {
+        public const string Default = $"{GroupName}.{nameof(Kisi)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+    }
     public static class OzelKod
     {
         public const string Default = $"{GroupName}.{nameof(OzelKod)}";

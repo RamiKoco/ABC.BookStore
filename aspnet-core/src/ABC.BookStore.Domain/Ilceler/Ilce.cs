@@ -7,4 +7,6 @@ public class Ilce : FullAuditedAggregateRoot<Guid>
     public bool Durum { get; set; }
 
     public Il Il { get; set; }
+
+    public ICollection<Kisi> Kisiler { get; set; }
 }

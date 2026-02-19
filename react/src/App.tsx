@@ -2,6 +2,7 @@ import CallbackPage from "./pages/CallbackPage";
 import HomePage from "./pages/HomePage";
 import BooksPage from "./pages/BooksPage";
 import BankaPage from "./pages/BankaPage";
+import KisiPage from "./pages/KisiPage";
 import IlPage from "./pages/IlPage";
 import UsersPage from "./pages/UsersPage";
 import RolesPage from "./pages/RolesPage";
@@ -15,6 +16,7 @@ import {
   EnvironmentOutlined,
   LockOutlined,
   UserOutlined,
+  TeamOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 
@@ -30,6 +32,7 @@ function App() {
     { href: "/", label: "Ana Sayfa", icon: <HomeOutlined />, color: "#1677ff" },
     { href: "/books", label: "Kitaplar", icon: <BookOutlined />, color: "#fa8c16" },
     { href: "/bankalar", label: "Bankalar", icon: <BankOutlined />, color: "#1677ff" },
+    { href: "/kisiler", label: "Kişiler", icon: <TeamOutlined />, color: "#fa541c" },
     { href: "/iller", label: "İller", icon: <EnvironmentOutlined />, color: "#52c41a" },
     { href: "/permissions", label: "İzin Yönetimi", icon: <LockOutlined />, color: "#722ed1" },
     { href: "/kullanicilar", label: "Kullanıcılar", icon: <UserOutlined />, color: "#eb2f96" },
@@ -81,6 +84,7 @@ function App() {
   const content = () => {
     if (path === "/books") return <BooksPage />;
     if (path === "/bankalar") return <BankaPage />;
+    if (path === "/kisiler") return <KisiPage />;
     if (path === "/iller") return <IlPage />;
     if (path === "/kullanicilar") return <UsersPage />;
     if (path === "/roller") return <RolesPage />;

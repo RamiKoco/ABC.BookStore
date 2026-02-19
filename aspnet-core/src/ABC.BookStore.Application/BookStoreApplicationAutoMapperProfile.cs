@@ -2,6 +2,7 @@
 using ABC.BookStore.BankaSubeler;
 using ABC.BookStore.Ilceler;
 using ABC.BookStore.Iller;
+using ABC.BookStore.Kisiler;
 
 namespace ABC.BookStore;
 public class BookStoreApplicationAutoMapperProfile : Profile
@@ -93,6 +94,24 @@ public class BookStoreApplicationAutoMapperProfile : Profile
         CreateMap<UpdateIlceDto, Ilce>();
         CreateMap<SelectIlceDto, CreateIlceDto>();
         CreateMap<SelectIlceDto, UpdateIlceDto>();
+
+        //kisi
+        CreateMap<Kisi, SelectKisiDto>()           
+            .ForMember(x => x.IlAdi, y => y.MapFrom(z => z.Il.Ad))
+            .ForMember(x => x.IlceAdi, y => y.MapFrom(z => z.Ilce.Ad))   
+            .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+            .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<Kisi, ListKisiDto>()            
+            .ForMember(x => x.IlAdi, y => y.MapFrom(z => z.Il.Ad))
+            .ForMember(x => x.IlceAdi, y => y.MapFrom(z => z.Ilce.Ad))
+            .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+            .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad));
+
+        CreateMap<CreateKisiDto, Kisi>();
+        CreateMap<UpdateKisiDto, Kisi>();
+        CreateMap<SelectKisiDto, CreateKisiDto>();
+        CreateMap<SelectKisiDto, UpdateKisiDto>();
 
         //OzelKod
         CreateMap<OzelKod, SelectOzelKodDto>();

@@ -12,4 +12,5 @@ public static class EntityConsts
     public const int MaxEmailLength = 30;
     public const int MaxAdresLength = 150;
     public const int MaxBarkodLength = 128;
+    public const int MaxImageLength = 500000; // base64 için yeterli
 }
