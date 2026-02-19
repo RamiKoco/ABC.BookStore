@@ -23,6 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABC.BookStore.HttpApi.Clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABC.BookStore.DbMigrator", "src\ABC.BookStore.DbMigrator\ABC.BookStore.DbMigrator.csproj", "{0731D09D-DE9F-42D9-86AD-BE693DC53DDF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,5 +160,8 @@ Global
 		{DFC7A8C8-2D46-482A-9BE3-CCAA4039593E} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{23D51025-538F-4BDB-8989-B319362632E4} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{0731D09D-DE9F-42D9-86AD-BE693DC53DDF} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BADE1966-A903-4AAA-82B9-92A569C7DB25}
 	EndGlobalSection
 EndGlobal

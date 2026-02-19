@@ -14,3 +14,5 @@ global using ABC.BookStore.OzelKodlar;
 global using System.Linq.Expressions;
 global using Volo.Abp.Domain.Entities;
 global using Volo.Abp.Domain.Repositories;
+global using ABC.BookStore.BankaSubeler;
+global using ABC.BookStore.Bankalar;

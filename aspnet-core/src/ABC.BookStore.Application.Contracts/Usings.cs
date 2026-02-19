@@ -7,4 +7,5 @@ global using ABC.BookStore.Localization;
 global using FluentValidation;
 global using Microsoft.Extensions.Localization;
 global using Volo.Abp.Application.Dtos;
-
+global using Volo.Abp.Authorization.Permissions;
+global using Volo.Abp.Localization;

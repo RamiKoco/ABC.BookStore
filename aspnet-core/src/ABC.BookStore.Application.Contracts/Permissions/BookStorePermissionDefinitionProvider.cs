@@ -1,9 +1,4 @@
-﻿using ABC.BookStore.Localization;
-using Volo.Abp.Authorization.Permissions;
-using Volo.Abp.Localization;
-
-namespace ABC.BookStore.Permissions;
-
+﻿namespace ABC.BookStore.Permissions;
 public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvider
 {
     public override void Define(IPermissionDefinitionContext context)
@@ -11,6 +6,29 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
         var localizePrefix = "Permission";
         var mainGroup = context.AddGroup(BookStorePermissions.GroupName,
             L($"{localizePrefix}:{BookStorePermissions.GroupName}"));
+        //Banka
+        var banka = mainGroup.AddPermission(BookStorePermissions.Banka_.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Banka_)}"));
+
+        banka.AddChild(BookStorePermissions.Banka_.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Banka_)}{BookStorePermissions.CreateConst}"));//Permission:Banka.Create
+        banka.AddChild(BookStorePermissions.Banka_.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Banka_)}{BookStorePermissions.UpdateConst}"));//Permission:Banka.Update
+        banka.AddChild(BookStorePermissions.Banka_.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Banka_)}{BookStorePermissions.DeleteConst}"));
+        banka.AddChild(BookStorePermissions.Banka_.Transaction,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Banka_)}{BookStorePermissions.TransactionConst}"));
+
+        //Banka Şube
+        var bankaSube = mainGroup.AddPermission(BookStorePermissions.BankaSube.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaSube)}"));
+
+        bankaSube.AddChild(BookStorePermissions.BankaSube.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaSube)}{BookStorePermissions.CreateConst}"));
+        bankaSube.AddChild(BookStorePermissions.BankaSube.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaSube)}{BookStorePermissions.UpdateConst}"));
+        bankaSube.AddChild(BookStorePermissions.BankaSube.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaSube)}{BookStorePermissions.DeleteConst}"));
 
         // Books
         var books = mainGroup.AddPermission(BookStorePermissions.Books.Default,

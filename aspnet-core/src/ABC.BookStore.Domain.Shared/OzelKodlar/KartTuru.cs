@@ -2,5 +2,6 @@
 public enum KartTuru
 {
     Book = 1,
-    Test = 2,
+    Banka = 2,
+    BankaSube=3,
 }

@@ -1,4 +1,6 @@
-﻿using ABC.BookStore.Ilceler;
+﻿using ABC.BookStore.Bankalar;
+using ABC.BookStore.BankaSubeler;
+using ABC.BookStore.Ilceler;
 using ABC.BookStore.Iller;
 
 namespace ABC.BookStore;
@@ -6,7 +8,49 @@ public class BookStoreApplicationAutoMapperProfile : Profile
 {
     public BookStoreApplicationAutoMapperProfile()
     {
-        //banka
+        //Banka
+        CreateMap<Banka, SelectBankaDto>()
+            .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+            .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
+            .ForMember(x => x.OzelKod3Adi, y => y.MapFrom(z => z.OzelKod3.Ad))
+            .ForMember(x => x.OzelKod4Adi, y => y.MapFrom(z => z.OzelKod4.Ad))
+            .ForMember(x => x.OzelKod5Adi, y => y.MapFrom(z => z.OzelKod5.Ad));
+
+        CreateMap<Banka, ListBankaDto>()
+            .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+            .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
+            .ForMember(x => x.OzelKod3Adi, y => y.MapFrom(z => z.OzelKod3.Ad))
+            .ForMember(x => x.OzelKod4Adi, y => y.MapFrom(z => z.OzelKod4.Ad))
+            .ForMember(x => x.OzelKod5Adi, y => y.MapFrom(z => z.OzelKod5.Ad));
+
+        CreateMap<CreateBankaDto, Banka>();
+        CreateMap<UpdateBankaDto, Banka>();
+        CreateMap<SelectBankaDto, CreateBankaDto>();
+        CreateMap<SelectBankaDto, UpdateBankaDto>();
+
+        //Bankasube
+        CreateMap<BankaSube, SelectBankaSubeDto>()
+            .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.Banka.Ad))
+            .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+            .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
+            .ForMember(x => x.OzelKod3Adi, y => y.MapFrom(z => z.OzelKod3.Ad))
+            .ForMember(x => x.OzelKod4Adi, y => y.MapFrom(z => z.OzelKod4.Ad))
+            .ForMember(x => x.OzelKod5Adi, y => y.MapFrom(z => z.OzelKod5.Ad));
+
+        CreateMap<BankaSube, ListBankaSubeDto>()
+            .ForMember(x => x.BankaAdi, y => y.MapFrom(z => z.Banka.Ad))
+            .ForMember(x => x.OzelKod1Adi, y => y.MapFrom(z => z.OzelKod1.Ad))
+            .ForMember(x => x.OzelKod2Adi, y => y.MapFrom(z => z.OzelKod2.Ad))
+            .ForMember(x => x.OzelKod3Adi, y => y.MapFrom(z => z.OzelKod3.Ad))
+            .ForMember(x => x.OzelKod4Adi, y => y.MapFrom(z => z.OzelKod4.Ad))
+            .ForMember(x => x.OzelKod5Adi, y => y.MapFrom(z => z.OzelKod5.Ad));
+
+        CreateMap<CreateBankaSubeDto, BankaSube>();
+        CreateMap<UpdateBankaSubeDto, BankaSube>();
+        CreateMap<SelectBankaSubeDto, CreateBankaSubeDto>();
+        CreateMap<SelectBankaSubeDto, UpdateBankaSubeDto>();
+
+        //Book
         CreateMap<Book, SelectBookDto>()
             .ForMember(x => x.IlAdi, y => y.MapFrom(z => z.Il.Ad))
             .ForMember(x => x.IlceAdi, y => y.MapFrom(z => z.Ilce.Ad))

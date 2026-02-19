@@ -7,7 +7,23 @@ public static class BookStorePermissions
     public const string CreateConst = ".Create";
     public const string UpdateConst = ".Update";
     public const string DeleteConst = ".Delete";
+    public const string TransactionConst = ".Transaction";
 
+    public static class Banka_
+    {
+        public const string Default = $"{GroupName}.{nameof(Banka_)}";//BookStore.Banka
+        public const string Create = Default + CreateConst;//BookStore.Banka.Create
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+        public const string Transaction = Default + TransactionConst;
+    }
+    public static class BankaSube
+    {
+        public const string Default = $"{GroupName}.{nameof(BankaSube)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+    }
     public static class Books
     {
         public const string Default = $"{GroupName}.{nameof(Books)}";

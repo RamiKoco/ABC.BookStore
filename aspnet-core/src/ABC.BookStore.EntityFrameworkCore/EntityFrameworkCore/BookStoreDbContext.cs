@@ -1,4 +1,6 @@
-﻿using ABC.BookStore.Ilceler;
+﻿using ABC.BookStore.Bankalar;
+using ABC.BookStore.BankaSubeler;
+using ABC.BookStore.Ilceler;
 
 namespace ABC.BookStore.EntityFrameworkCore;
 
@@ -11,6 +13,8 @@ public class BookStoreDbContext :
     ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
+    public DbSet<Banka> Bankalar { get; set; }
+    public DbSet<BankaSube> BankaSubeler { get; set; }
     public DbSet<Book> Books { get; set; }
     public DbSet<Il> Iller { get; set; }
     public DbSet<Ilce> Ilceler { get; set; }
@@ -65,6 +69,8 @@ public class BookStoreDbContext :
         builder.ConfigureTenantManagement();
 
         /* Configure your own tables/entities inside here */
+        builder.ConfigureBanka();
+        builder.ConfigureBankaSube();
         builder.ConfigureBook();
         builder.ConfigureIl();
         builder.ConfigureIlce();
