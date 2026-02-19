@@ -31,6 +31,13 @@ public static class BookStorePermissions
         public const string Edit = Default + UpdateConst;
         public const string Delete = Default + DeleteConst;
     }
+    public static class Donem
+    {
+        public const string Default = $"{GroupName}.{nameof(Donem)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+    }
     public static class Il
     {
         public const string Default = $"{GroupName}.{nameof(Il)}";//BookStore.Il
@@ -55,6 +62,13 @@ public static class BookStorePermissions
     public static class OzelKod
     {
         public const string Default = $"{GroupName}.{nameof(OzelKod)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+    }
+    public static class Sube
+    {
+        public const string Default = $"{GroupName}.{nameof(Sube)}";
         public const string Create = Default + CreateConst;
         public const string Update = Default + UpdateConst;
         public const string Delete = Default + DeleteConst;

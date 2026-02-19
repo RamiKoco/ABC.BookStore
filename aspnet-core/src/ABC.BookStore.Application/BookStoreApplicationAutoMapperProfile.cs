@@ -1,8 +1,11 @@
 ﻿using ABC.BookStore.Bankalar;
 using ABC.BookStore.BankaSubeler;
+using ABC.BookStore.Donemler;
 using ABC.BookStore.Ilceler;
 using ABC.BookStore.Iller;
 using ABC.BookStore.Kisiler;
+using ABC.BookStore.Parametreler;
+using ABC.BookStore.Subeler;
 
 namespace ABC.BookStore;
 public class BookStoreApplicationAutoMapperProfile : Profile
@@ -74,6 +77,23 @@ public class BookStoreApplicationAutoMapperProfile : Profile
         CreateMap<UpdateBookDto, Book>();
         CreateMap<SelectBookDto, CreateBookDto>();
         CreateMap<SelectBookDto, UpdateBookDto>();
+
+        //Donem
+        CreateMap<Donem, SelectDonemDto>();
+        CreateMap<Donem, ListDonemDto>();
+        CreateMap<CreateDonemDto, Donem>();
+        CreateMap<UpdateDonemDto, Donem>();
+        CreateMap<SelectDonemDto, CreateDonemDto>();
+        CreateMap<SelectDonemDto, UpdateDonemDto>();
+
+        //Firma Parametre
+        CreateMap<FirmaParametre, SelectFirmaParametreDto>()
+            .ForMember(x => x.SubeAdi, y => y.MapFrom(z => z.Sube.Ad))
+            .ForMember(x => x.DonemAdi, y => y.MapFrom(z => z.Donem.Ad));
+
+        CreateMap<CreateFirmaParametreDto, FirmaParametre>();
+        CreateMap<UpdateFirmaParametreDto, FirmaParametre>();
+
         //Il
         CreateMap<Il, SelectIlDto>();
         CreateMap<Il, ListIlDto>();
@@ -121,5 +141,12 @@ public class BookStoreApplicationAutoMapperProfile : Profile
         CreateMap<SelectOzelKodDto, CreateOzelKodDto>();
         CreateMap<SelectOzelKodDto, UpdateOzelKodDto>();
 
+        //Sube
+        CreateMap<Sube, SelectSubeDto>();
+        CreateMap<Sube, ListSubeDto>();
+        CreateMap<CreateSubeDto, Sube>();
+        CreateMap<UpdateSubeDto, Sube>();
+        CreateMap<SelectSubeDto, CreateSubeDto>();
+        CreateMap<SelectSubeDto, UpdateSubeDto>();
     }
 }

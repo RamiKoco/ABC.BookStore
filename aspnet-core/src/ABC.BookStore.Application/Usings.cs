@@ -9,3 +9,4 @@ global using ABC.BookStore.OzelKodlar;
 global using AutoMapper;
 global using Volo.Abp.Application.Dtos;
 global using Volo.Abp.Domain.Repositories;
+global using Microsoft.AspNetCore.Mvc;

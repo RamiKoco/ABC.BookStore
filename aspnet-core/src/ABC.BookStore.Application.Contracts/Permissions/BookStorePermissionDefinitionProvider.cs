@@ -41,6 +41,17 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
         books.AddChild(BookStorePermissions.Books.Delete,
             L($"{localizePrefix}:{nameof(BookStorePermissions.Books)}{BookStorePermissions.DeleteConst}"));
 
+        //donem
+        var donem = mainGroup.AddPermission(BookStorePermissions.Donem.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Donem)}"));
+
+        donem.AddChild(BookStorePermissions.Donem.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Donem)}{BookStorePermissions.CreateConst}"));
+        donem.AddChild(BookStorePermissions.Donem.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Donem)}{BookStorePermissions.UpdateConst}"));
+        donem.AddChild(BookStorePermissions.Donem.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Donem)}{BookStorePermissions.DeleteConst}"));
+
         //Il
         var il = mainGroup.AddPermission(BookStorePermissions.Il.Default,
             L($"{localizePrefix}:{nameof(BookStorePermissions.Il)}"));
@@ -82,6 +93,17 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
             L($"{localizePrefix}:{nameof(BookStorePermissions.OzelKod)}{BookStorePermissions.UpdateConst}"));
         ozelKod.AddChild(BookStorePermissions.OzelKod.Delete,
             L($"{localizePrefix}:{nameof(BookStorePermissions.OzelKod)}{BookStorePermissions.DeleteConst}"));
+
+        // sube
+        var sube = mainGroup.AddPermission(BookStorePermissions.Sube.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Sube)}"));
+
+        sube.AddChild(BookStorePermissions.Sube.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Sube)}{BookStorePermissions.CreateConst}"));
+        sube.AddChild(BookStorePermissions.Sube.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Sube)}{BookStorePermissions.UpdateConst}"));
+        sube.AddChild(BookStorePermissions.Sube.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Sube)}{BookStorePermissions.DeleteConst}"));
 
     }
 

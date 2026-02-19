@@ -4,6 +4,7 @@ using ABC.BookStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace ABC.BookStore.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260219091625_Donem_Sube")]
+    partial class Donem_Sube
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -752,32 +755,6 @@ namespace ABC.BookStore.Migrations
                     b.HasIndex("Kod");
 
                     b.ToTable("AppOzelKodlar", (string)null);
-                });
-
-            modelBuilder.Entity("ABC.BookStore.Parametreler.FirmaParametre", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("DonemId")
-                        .HasColumnType("UniqueIdentifier");
-
-                    b.Property<Guid>("SubeId")
-                        .HasColumnType("UniqueIdentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("UniqueIdentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DonemId");
-
-                    b.HasIndex("SubeId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("AppFirmaParametreler", (string)null);
                 });
 
             modelBuilder.Entity("ABC.BookStore.Subeler.Sube", b =>
@@ -2767,33 +2744,6 @@ namespace ABC.BookStore.Migrations
                     b.Navigation("OzelKod2");
                 });
 
-            modelBuilder.Entity("ABC.BookStore.Parametreler.FirmaParametre", b =>
-                {
-                    b.HasOne("ABC.BookStore.Donemler.Donem", "Donem")
-                        .WithMany("FirmaParametreler")
-                        .HasForeignKey("DonemId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("ABC.BookStore.Subeler.Sube", "Sube")
-                        .WithMany("FirmaParemetreler")
-                        .HasForeignKey("SubeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Volo.Abp.Identity.IdentityUser", "User")
-                        .WithOne()
-                        .HasForeignKey("ABC.BookStore.Parametreler.FirmaParametre", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Donem");
-
-                    b.Navigation("Sube");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
                 {
                     b.HasOne("Volo.Abp.AuditLogging.AuditLog", null)
@@ -2941,11 +2891,6 @@ namespace ABC.BookStore.Migrations
                     b.Navigation("BankaSubeler");
                 });
 
-            modelBuilder.Entity("ABC.BookStore.Donemler.Donem", b =>
-                {
-                    b.Navigation("FirmaParametreler");
-                });
-
             modelBuilder.Entity("ABC.BookStore.Ilceler.Ilce", b =>
                 {
                     b.Navigation("Kisiler");
@@ -2995,11 +2940,6 @@ namespace ABC.BookStore.Migrations
                     b.Navigation("OzelKod5Bankalar");
 
                     b.Navigation("OzelKod5Book");
-                });
-
-            modelBuilder.Entity("ABC.BookStore.Subeler.Sube", b =>
-                {
-                    b.Navigation("FirmaParemetreler");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

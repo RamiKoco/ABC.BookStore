@@ -1,4 +1,8 @@
-﻿namespace ABC.BookStore.EntityFrameworkCore;
+﻿using ABC.BookStore.Donemler;
+using ABC.BookStore.Parametreler;
+using ABC.BookStore.Subeler;
+
+namespace ABC.BookStore.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
@@ -12,10 +16,13 @@ public class BookStoreDbContext :
     public DbSet<Banka> Bankalar { get; set; }
     public DbSet<BankaSube> BankaSubeler { get; set; }
     public DbSet<Book> Books { get; set; }
+    public DbSet<Donem> Donemler { get; set; }
+    public DbSet<FirmaParametre> FirmaParametreler { get; set; }
     public DbSet<Il> Iller { get; set; }
     public DbSet<Ilce> Ilceler { get; set; }
     public DbSet<Kisi> Kisiler { get; set; }
     public DbSet<OzelKod> OzelKodlar { get; set; }
+    public DbSet<Sube> Subeler { get; set; }
     #region Entities from the modules
 
     /* Notice: We only implemented IIdentityDbContext and ITenantManagementDbContext
@@ -69,10 +76,12 @@ public class BookStoreDbContext :
         builder.ConfigureBanka();
         builder.ConfigureBankaSube();
         builder.ConfigureBook();
+        builder.ConfigureDonem();
+        builder.ConfigureFirmaParametre();
         builder.ConfigureIl();
         builder.ConfigureIlce();
         builder.ConfigureKisi();
         builder.ConfigureOzelKod();
-        
+        builder.ConfigureSube();
     }
 }

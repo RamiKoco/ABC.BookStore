@@ -18,3 +18,6 @@ global using ABC.BookStore.BankaSubeler;
 global using ABC.BookStore.Bankalar;
 global using ABC.BookStore.Ilceler;
 global using ABC.BookStore.Kisiler;
+global using ABC.BookStore.Donemler;
+global using ABC.BookStore.Subeler;
+global using Volo.Abp.Identity;
