@@ -3,7 +3,12 @@ import CallbackPage from "./pages/CallbackPage";
 import HomePage from "./pages/HomePage";
 import BooksPage from "./pages/BooksPage";
 import BankaPage from "./pages/BankaPage";
+import BankaHesapPage from "./pages/BankaHesapPage";
 import KisiPage from "./pages/KisiPage";
+import CariPage from "./pages/CariPage";
+import BirimPage from "./pages/BirimPage";
+import DepoPage from "./pages/DepoPage";
+import StokPage from "./pages/StokPage";
 import DonemPage from "./pages/DonemPage";
 import SubePage from "./pages/SubePage";
 import IlPage from "./pages/IlPage";
@@ -17,10 +22,15 @@ import {
   HomeOutlined,
   BookOutlined,
   BankOutlined,
+  CreditCardOutlined,
   EnvironmentOutlined,
   LockOutlined,
   UserOutlined,
   TeamOutlined,
+  SolutionOutlined,
+  ExperimentOutlined,
+  InboxOutlined,
+  AppstoreOutlined,
   CalendarOutlined,
   ShopOutlined,
   LogoutOutlined,
@@ -56,7 +66,12 @@ function App() {
     { href: "/", label: "Ana Sayfa", icon: <HomeOutlined />, color: "#1677ff" },
     { href: "/books", label: "Kitaplar", icon: <BookOutlined />, color: "#fa8c16" },
     { href: "/bankalar", label: "Bankalar", icon: <BankOutlined />, color: "#1677ff" },
+    { href: "/banka-hesaplar", label: "Banka Hesaplar", icon: <CreditCardOutlined />, color: "#597ef7" },
     { href: "/kisiler", label: "Kişiler", icon: <TeamOutlined />, color: "#fa541c" },
+    { href: "/cariler", label: "Cariler", icon: <SolutionOutlined />, color: "#9254de" },
+    { href: "/birimler", label: "Birimler", icon: <ExperimentOutlined />, color: "#13c2c2" },
+    { href: "/depolar", label: "Depolar", icon: <InboxOutlined />, color: "#389e0d" },
+    { href: "/stoklar", label: "Stoklar", icon: <AppstoreOutlined />, color: "#d4380d" },
     { href: "/iller", label: "İller", icon: <EnvironmentOutlined />, color: "#52c41a" },
     { href: "/donemler", label: "Dönemler", icon: <CalendarOutlined />, color: "#faad14" },
     { href: "/subeler", label: "Şubeler", icon: <ShopOutlined />, color: "#2f54eb" },
@@ -123,7 +138,12 @@ function App() {
   const content = () => {
     if (path === "/books") return <BooksPage />;
     if (path === "/bankalar") return <BankaPage />;
+    if (path === "/banka-hesaplar") return <BankaHesapPage />;
     if (path === "/kisiler") return <KisiPage />;
+    if (path === "/cariler") return <CariPage />;
+    if (path === "/birimler") return <BirimPage />;
+    if (path === "/depolar") return <DepoPage />;
+    if (path === "/stoklar") return <StokPage />;
     if (path === "/iller") return <IlPage />;
     if (path === "/donemler") return <DonemPage />;
     if (path === "/subeler") return <SubePage />;

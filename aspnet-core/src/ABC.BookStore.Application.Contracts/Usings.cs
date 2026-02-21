@@ -9,3 +9,13 @@ global using Microsoft.Extensions.Localization;
 global using Volo.Abp.Application.Dtos;
 global using Volo.Abp.Authorization.Permissions;
 global using Volo.Abp.Localization;
+global using ABC.BookStore.Makbuzlar;
+global using System.Collections.Generic;
+global using ABC.BookStore.MakbuzHareketler;
+global using ABC.BookStore.OdemeBelgeleri;
+global using ABC.BookStore.Faturalar;
+global using ABC.BookStore.FaturaHareketler;
+global using ABC.BookStore.Cariler;
+global using ABC.BookStore.CariSubeler;
+global using ABC.BookStore.Stoklar;
+

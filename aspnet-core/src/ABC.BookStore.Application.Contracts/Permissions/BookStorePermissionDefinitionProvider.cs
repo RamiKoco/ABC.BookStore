@@ -30,6 +30,30 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
         bankaSube.AddChild(BookStorePermissions.BankaSube.Delete,
             L($"{localizePrefix}:{nameof(BookStorePermissions.BankaSube)}{BookStorePermissions.DeleteConst}"));
 
+        //Banka Hesap
+        var bankaHesap = mainGroup.AddPermission(BookStorePermissions.BankaHesap.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaHesap)}"));
+
+        bankaHesap.AddChild(BookStorePermissions.BankaHesap.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaHesap)}{BookStorePermissions.CreateConst}"));
+        bankaHesap.AddChild(BookStorePermissions.BankaHesap.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaHesap)}{BookStorePermissions.UpdateConst}"));
+        bankaHesap.AddChild(BookStorePermissions.BankaHesap.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaHesap)}{BookStorePermissions.DeleteConst}"));
+        bankaHesap.AddChild(BookStorePermissions.BankaHesap.Transaction,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.BankaHesap)}{BookStorePermissions.TransactionConst}"));
+
+        //Birim
+        var birim = mainGroup.AddPermission(BookStorePermissions.Birim.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Birim)}"));
+
+        birim.AddChild(BookStorePermissions.Birim.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Birim)}{BookStorePermissions.CreateConst}"));
+        birim.AddChild(BookStorePermissions.Birim.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Birim)}{BookStorePermissions.UpdateConst}"));
+        birim.AddChild(BookStorePermissions.Birim.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Birim)}{BookStorePermissions.DeleteConst}"));
+
         // Books
         var books = mainGroup.AddPermission(BookStorePermissions.Books.Default,
             L($"{localizePrefix}:{nameof(BookStorePermissions.Books)}"));
@@ -40,6 +64,32 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
             L($"{localizePrefix}:{nameof(BookStorePermissions.Books)}{BookStorePermissions.UpdateConst}"));
         books.AddChild(BookStorePermissions.Books.Delete,
             L($"{localizePrefix}:{nameof(BookStorePermissions.Books)}{BookStorePermissions.DeleteConst}"));
+
+        //Cari
+        var cari = mainGroup.AddPermission(BookStorePermissions.Cari.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Cari)}"));
+
+        cari.AddChild(BookStorePermissions.Cari.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Cari)}{BookStorePermissions.CreateConst}"));
+        cari.AddChild(BookStorePermissions.Cari.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Cari)}{BookStorePermissions.UpdateConst}"));
+        cari.AddChild(BookStorePermissions.Cari.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Cari)}{BookStorePermissions.DeleteConst}"));
+        cari.AddChild(BookStorePermissions.Cari.Transaction,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Cari)}{BookStorePermissions.TransactionConst}"));
+
+        //Depo
+        var depo = mainGroup.AddPermission(BookStorePermissions.Depo.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Depo)}"));
+
+        depo.AddChild(BookStorePermissions.Depo.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Depo)}{BookStorePermissions.CreateConst}"));
+        depo.AddChild(BookStorePermissions.Depo.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Depo)}{BookStorePermissions.UpdateConst}"));
+        depo.AddChild(BookStorePermissions.Depo.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Depo)}{BookStorePermissions.DeleteConst}"));
+        depo.AddChild(BookStorePermissions.Depo.Transaction,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Depo)}{BookStorePermissions.TransactionConst}"));
 
         //donem
         var donem = mainGroup.AddPermission(BookStorePermissions.Donem.Default,
@@ -93,6 +143,19 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
             L($"{localizePrefix}:{nameof(BookStorePermissions.OzelKod)}{BookStorePermissions.UpdateConst}"));
         ozelKod.AddChild(BookStorePermissions.OzelKod.Delete,
             L($"{localizePrefix}:{nameof(BookStorePermissions.OzelKod)}{BookStorePermissions.DeleteConst}"));
+
+        // stok
+        var stok = mainGroup.AddPermission(BookStorePermissions.Stok.Default,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Stok)}"));
+
+        stok.AddChild(BookStorePermissions.Stok.Create,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Stok)}{BookStorePermissions.CreateConst}"));
+        stok.AddChild(BookStorePermissions.Stok.Update,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Stok)}{BookStorePermissions.UpdateConst}"));
+        stok.AddChild(BookStorePermissions.Stok.Delete,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Stok)}{BookStorePermissions.DeleteConst}"));
+        stok.AddChild(BookStorePermissions.Stok.Transaction,
+            L($"{localizePrefix}:{nameof(BookStorePermissions.Stok)}{BookStorePermissions.TransactionConst}"));
 
         // sube
         var sube = mainGroup.AddPermission(BookStorePermissions.Sube.Default,

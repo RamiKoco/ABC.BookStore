@@ -1,9 +1,4 @@
-﻿using ABC.BookStore.Donemler;
-using ABC.BookStore.Parametreler;
-using ABC.BookStore.Subeler;
-
-namespace ABC.BookStore.EntityFrameworkCore;
-
+﻿namespace ABC.BookStore.EntityFrameworkCore;
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
 [ConnectionStringName("Default")]
@@ -15,26 +10,26 @@ public class BookStoreDbContext :
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<Banka> Bankalar { get; set; }
     public DbSet<BankaSube> BankaSubeler { get; set; }
+    public DbSet<BankaHesap> BankaHesaplar { get; set; }
+    public DbSet<Birim> Birimler { get; set; }
+    public DbSet<Cari> Cariler { get; set; }
+    public DbSet<Depo> Depolar { get; set; }
     public DbSet<Book> Books { get; set; }
     public DbSet<Donem> Donemler { get; set; }
     public DbSet<FirmaParametre> FirmaParametreler { get; set; }
+    public DbSet<Fatura> Faturalar { get; set; }
+    public DbSet<Hizmet> Hizmetler { get; set; }
     public DbSet<Il> Iller { get; set; }
     public DbSet<Ilce> Ilceler { get; set; }
+    public DbSet<Kasa> Kasalar { get; set; }
     public DbSet<Kisi> Kisiler { get; set; }
+    public DbSet<Makbuz> Makbuzlar { get; set; }
+    public DbSet<Masraf> Masraflar { get; set; }
     public DbSet<OzelKod> OzelKodlar { get; set; }
+    public DbSet<Stok> Stoklar { get; set; }
     public DbSet<Sube> Subeler { get; set; }
-    #region Entities from the modules
 
-    /* Notice: We only implemented IIdentityDbContext and ITenantManagementDbContext
-     * and replaced them for this DbContext. This allows you to perform JOIN
-     * queries for the entities of these modules over the repositories easily. You
-     * typically don't need that for other modules. But, if you need, you can
-     * implement the DbContext interface of the needed module and use ReplaceDbContext
-     * attribute just like IIdentityDbContext and ITenantManagementDbContext.
-     *
-     * More info: Replacing a DbContext of a module ensures that the related module
-     * uses this DbContext on runtime. Otherwise, it will use its own DbContext class.
-     */
+    #region Entities from the modules   
 
     //Identity
     public DbSet<IdentityUser> Users { get; set; }
@@ -75,13 +70,26 @@ public class BookStoreDbContext :
         /* Configure your own tables/entities inside here */
         builder.ConfigureBanka();
         builder.ConfigureBankaSube();
+        builder.ConfigureBankaHesap();
         builder.ConfigureBook();
+        builder.ConfigureBirim();
+        builder.ConfigureCari();
+        builder.ConfigureCariSube();
+        builder.ConfigureDepo();
         builder.ConfigureDonem();
+        builder.ConfigureFatura();
+        builder.ConfigureFaturaHareket();
         builder.ConfigureFirmaParametre();
+        builder.ConfigureHizmet();
+        builder.ConfigureKasa();
         builder.ConfigureIl();
         builder.ConfigureIlce();
         builder.ConfigureKisi();
+        builder.ConfigureMakbuz();
+        builder.ConfigureMakbuzHareket();
+        builder.ConfigureMasraf();
         builder.ConfigureOzelKod();
+        builder.ConfigureStok();
         builder.ConfigureSube();
     }
 }

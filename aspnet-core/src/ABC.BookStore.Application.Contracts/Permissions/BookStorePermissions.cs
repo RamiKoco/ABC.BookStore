@@ -24,12 +24,43 @@ public static class BookStorePermissions
         public const string Update = Default + UpdateConst;
         public const string Delete = Default + DeleteConst;
     }
+    public static class BankaHesap
+    {
+        public const string Default = $"{GroupName}.{nameof(BankaHesap)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+        public const string Transaction = Default + TransactionConst;
+    }
+    public static class Birim
+    {
+        public const string Default = $"{GroupName}.{nameof(Birim)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+    }
     public static class Books
     {
         public const string Default = $"{GroupName}.{nameof(Books)}";
         public const string Create = Default + CreateConst;
         public const string Edit = Default + UpdateConst;
         public const string Delete = Default + DeleteConst;
+    }
+    public static class Cari
+    {
+        public const string Default = $"{GroupName}.{nameof(Cari)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+        public const string Transaction = Default + TransactionConst;
+    }
+    public static class Depo
+    {
+        public const string Default = $"{GroupName}.{nameof(Depo)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+        public const string Transaction = Default + TransactionConst;
     }
     public static class Donem
     {
@@ -65,6 +96,14 @@ public static class BookStorePermissions
         public const string Create = Default + CreateConst;
         public const string Update = Default + UpdateConst;
         public const string Delete = Default + DeleteConst;
+    }
+    public static class Stok
+    {
+        public const string Default = $"{GroupName}.{nameof(Stok)}";
+        public const string Create = Default + CreateConst;
+        public const string Update = Default + UpdateConst;
+        public const string Delete = Default + DeleteConst;
+        public const string Transaction = Default + TransactionConst;
     }
     public static class Sube
     {

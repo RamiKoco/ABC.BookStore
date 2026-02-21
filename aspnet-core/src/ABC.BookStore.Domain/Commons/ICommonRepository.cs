@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Volo.Abp.Domain.Entities;
-using Volo.Abp.Domain.Repositories;
-
-namespace ABC.BookStore.Commons;
+﻿namespace ABC.BookStore.Commons;
 
 public interface ICommonRepository<TEntity> : IRepository<TEntity, Guid>
     where TEntity : class, IEntity<Guid>

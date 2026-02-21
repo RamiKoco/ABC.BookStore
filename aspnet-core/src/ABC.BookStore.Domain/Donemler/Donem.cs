@@ -1,6 +1,4 @@
-﻿using ABC.BookStore.Parametreler;
-
-namespace ABC.BookStore.Donemler;
+﻿namespace ABC.BookStore.Donemler;
 public class Donem : FullAuditedAggregateRoot<Guid>
 {
     public string Kod { get; set; }
@@ -8,6 +6,7 @@ public class Donem : FullAuditedAggregateRoot<Guid>
     public string Aciklama { get; set; }
     public bool Durum { get; set; }
 
+    public ICollection<Fatura> Faturalar { get; set; }
+    public ICollection<Makbuz> Makbuzlar { get; set; }
     public ICollection<FirmaParametre> FirmaParametreler { get; set; }
-
 }

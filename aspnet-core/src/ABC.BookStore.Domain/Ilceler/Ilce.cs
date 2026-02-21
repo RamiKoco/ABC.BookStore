@@ -8,5 +8,6 @@ public class Ilce : FullAuditedAggregateRoot<Guid>
 
     public Il Il { get; set; }
 
+    public ICollection<Cari> Cariler { get; set; }
     public ICollection<Kisi> Kisiler { get; set; }
 }

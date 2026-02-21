@@ -24,6 +24,132 @@ namespace ABC.BookStore.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ABC.BookStore.BankaHesaplar.BankaHesap", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<Guid>("BankaSubeId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid>("CariId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<byte>("DovizT")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<string>("HesapNo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<byte>("HesapTuru")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<string>("IbanNo")
+                        .HasMaxLength(26)
+                        .HasColumnType("VarChar");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid>("SubeId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BankaSubeId");
+
+                    b.HasIndex("CariId");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.HasIndex("SubeId");
+
+                    b.ToTable("AppBankaHesaplar", (string)null);
+                });
+
             modelBuilder.Entity("ABC.BookStore.BankaSubeler.BankaSube", b =>
                 {
                     b.Property<Guid>("Id")
@@ -221,6 +347,102 @@ namespace ABC.BookStore.Migrations
                     b.ToTable("AppBankalar", (string)null);
                 });
 
+            modelBuilder.Entity("ABC.BookStore.Birimler.Birim", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.ToTable("AppBirimler", (string)null);
+                });
+
             modelBuilder.Entity("ABC.BookStore.Books.Book", b =>
                 {
                     b.Property<Guid>("Id")
@@ -336,6 +558,308 @@ namespace ABC.BookStore.Migrations
                     b.ToTable("AppBooks", (string)null);
                 });
 
+            modelBuilder.Entity("ABC.BookStore.CariSubeler.CariSube", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<Guid>("CariId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<byte>("HareketTuru")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CariId");
+
+                    b.ToTable("AppCariSubeler", (string)null);
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Cariler.Cari", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ad")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Adres")
+                        .HasMaxLength(150)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(15)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<byte>("HesapTuru")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<Guid>("IlId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid>("IlceId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("LogoImage")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("Soyad")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("TCNo")
+                        .HasMaxLength(11)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Telefon")
+                        .HasMaxLength(15)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Unvan")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("VDKodu")
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("VergiDairesi")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("VergiNo")
+                        .HasMaxLength(10)
+                        .HasColumnType("VarChar");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IlId");
+
+                    b.HasIndex("IlceId");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.ToTable("AppCariler", (string)null);
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Depolar.Depo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid>("SubeId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.HasIndex("SubeId");
+
+                    b.ToTable("AppDepolar", (string)null);
+                });
+
             modelBuilder.Entity("ABC.BookStore.Donemler.Donem", b =>
                 {
                     b.Property<Guid>("Id")
@@ -405,6 +929,362 @@ namespace ABC.BookStore.Migrations
                     b.HasIndex("Kod");
 
                     b.ToTable("AppDonemler", (string)null);
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Faturalar.Fatura", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<Guid?>("AdresId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid>("BaglantiId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<decimal>("BrutTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid>("CariId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<Guid?>("DepoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DonemId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<string>("FaturaNo")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("VarChar");
+
+                    b.Property<byte>("FaturaTuru")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<int>("HareketSayisi")
+                        .HasColumnType("Int");
+
+                    b.Property<decimal>("IndirimTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<decimal>("KdvHaricTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<decimal>("KdvTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<decimal>("NetTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid?>("NoktaId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid>("SubeId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<DateTime>("Tarih")
+                        .HasColumnType("Date");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CariId");
+
+                    b.HasIndex("DepoId");
+
+                    b.HasIndex("DonemId");
+
+                    b.HasIndex("FaturaNo");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.HasIndex("SubeId");
+
+                    b.ToTable("AppFaturalar", (string)null);
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Faturalar.FaturaHareket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<decimal>("BirimFiyat")
+                        .HasColumnType("Money");
+
+                    b.Property<decimal>("BrutTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid?>("CariId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<Guid?>("DepoId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid>("FaturaId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<byte>("HareketTuru")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<Guid?>("HizmetId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<decimal>("IndirimTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<decimal>("KdvHaricTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<int>("KdvOrani")
+                        .HasColumnType("Int");
+
+                    b.Property<decimal>("KdvTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("MasrafId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<decimal>("Miktar")
+                        .HasColumnType("Money");
+
+                    b.Property<decimal>("NetTutar")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid?>("StokId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CariId");
+
+                    b.HasIndex("DepoId");
+
+                    b.HasIndex("FaturaId");
+
+                    b.HasIndex("HizmetId");
+
+                    b.HasIndex("MasrafId");
+
+                    b.HasIndex("StokId");
+
+                    b.ToTable("AppFaturaHareketler", (string)null);
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Hizmetler.Hizmet", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Barkod")
+                        .HasMaxLength(128)
+                        .HasColumnType("VarChar");
+
+                    b.Property<decimal>("BirimFiyat")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid>("BirimId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<int>("KdvOrani")
+                        .HasColumnType("Int");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BirimId");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.ToTable("AppHizmetler", (string)null);
                 });
 
             modelBuilder.Entity("ABC.BookStore.Ilceler.Ilce", b =>
@@ -546,6 +1426,107 @@ namespace ABC.BookStore.Migrations
                     b.ToTable("AppIller", (string)null);
                 });
 
+            modelBuilder.Entity("ABC.BookStore.Kasalar.Kasa", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid>("SubeId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.HasIndex("SubeId");
+
+                    b.ToTable("AppKasalar", (string)null);
+                });
+
             modelBuilder.Entity("ABC.BookStore.Kisiler.Kisi", b =>
                 {
                     b.Property<Guid>("Id")
@@ -677,6 +1658,366 @@ namespace ABC.BookStore.Migrations
                     b.ToTable("AppKisiler", (string)null);
                 });
 
+            modelBuilder.Entity("ABC.BookStore.Makbuzlar.Makbuz", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<Guid?>("AdresId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("BankaHesapId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<decimal>("BankaToplam")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid?>("CariId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<decimal>("CekToplam")
+                        .HasColumnType("Money");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<Guid>("DonemId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<int>("HareketSayisi")
+                        .HasColumnType("Int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<Guid?>("KasaId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("MakbuzNo")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("VarChar");
+
+                    b.Property<byte>("MakbuzTuru")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<decimal>("NakitToplam")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<decimal>("PosToplam")
+                        .HasColumnType("Money");
+
+                    b.Property<decimal>("SenetToplam")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid>("SubeId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<DateTime>("Tarih")
+                        .HasColumnType("Date");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BankaHesapId");
+
+                    b.HasIndex("CariId");
+
+                    b.HasIndex("DonemId");
+
+                    b.HasIndex("KasaId");
+
+                    b.HasIndex("MakbuzNo");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.HasIndex("SubeId");
+
+                    b.ToTable("AppMakbuzlar", (string)null);
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Makbuzlar.MakbuzHareket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("AsilBorclu")
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<Guid?>("BankaHesapId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<byte>("BelgeDurumu")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<string>("BelgeNo")
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<Guid?>("CekBankaId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("CekBankaSubeId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("CekHesapNo")
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ciranta")
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<Guid?>("KasaId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<bool>("KendiBelgemiz")
+                        .HasColumnType("Bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid>("MakbuzId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<byte>("OdemeTuru")
+                        .HasColumnType("TinyInt");
+
+                    b.Property<string>("TakipNo")
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<decimal>("Tutar")
+                        .HasColumnType("Money");
+
+                    b.Property<DateTime>("Vade")
+                        .HasColumnType("Date");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BankaHesapId");
+
+                    b.HasIndex("CekBankaId");
+
+                    b.HasIndex("CekBankaSubeId");
+
+                    b.HasIndex("KasaId");
+
+                    b.HasIndex("MakbuzId");
+
+                    b.HasIndex("TakipNo");
+
+                    b.ToTable("AppMakbuzHareketler", (string)null);
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Masraflar.Masraf", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Barkod")
+                        .HasMaxLength(128)
+                        .HasColumnType("VarChar");
+
+                    b.Property<decimal>("BirimFiyat")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid>("BirimId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<int>("KdvOrani")
+                        .HasColumnType("Int");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BirimId");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.ToTable("AppMasraflar", (string)null);
+                });
+
             modelBuilder.Entity("ABC.BookStore.OzelKodlar.OzelKod", b =>
                 {
                     b.Property<Guid>("Id")
@@ -759,6 +2100,9 @@ namespace ABC.BookStore.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("DepoId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("DonemId")
                         .HasColumnType("UniqueIdentifier");
 
@@ -770,6 +2114,8 @@ namespace ABC.BookStore.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepoId");
+
                     b.HasIndex("DonemId");
 
                     b.HasIndex("SubeId");
@@ -778,6 +2124,157 @@ namespace ABC.BookStore.Migrations
                         .IsUnique();
 
                     b.ToTable("AppFirmaParametreler", (string)null);
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Stoklar.Stok", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Aciklama")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Aciklama2")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Aciklama3")
+                        .HasMaxLength(200)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Ad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Alan")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("Barkod")
+                        .HasMaxLength(128)
+                        .HasColumnType("VarChar");
+
+                    b.Property<decimal>("BirimFiyat")
+                        .HasColumnType("Money");
+
+                    b.Property<Guid>("BirimId")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("Boy")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("BrutAgirlik")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("BrutHacim")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<bool>("Durum")
+                        .HasColumnType("Bit");
+
+                    b.Property<string>("En")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<int>("KdvOrani")
+                        .HasColumnType("Int");
+
+                    b.Property<string>("Kod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VarChar");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("NetAgirlik")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<string>("NetHacim")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.Property<Guid?>("OzelKod1Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod2Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod3Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod4Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<Guid?>("OzelKod5Id")
+                        .HasColumnType("UniqueIdentifier");
+
+                    b.Property<string>("Yukseklik")
+                        .HasMaxLength(50)
+                        .HasColumnType("VarChar");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BirimId");
+
+                    b.HasIndex("Kod");
+
+                    b.HasIndex("OzelKod1Id");
+
+                    b.HasIndex("OzelKod2Id");
+
+                    b.HasIndex("OzelKod3Id");
+
+                    b.HasIndex("OzelKod4Id");
+
+                    b.HasIndex("OzelKod5Id");
+
+                    b.ToTable("AppStoklar", (string)null);
                 });
 
             modelBuilder.Entity("ABC.BookStore.Subeler.Sube", b =>
@@ -2591,6 +4088,68 @@ namespace ABC.BookStore.Migrations
                     b.ToTable("AbpTenantConnectionStrings", (string)null);
                 });
 
+            modelBuilder.Entity("ABC.BookStore.BankaHesaplar.BankaHesap", b =>
+                {
+                    b.HasOne("ABC.BookStore.BankaSubeler.BankaSube", "BankaSube")
+                        .WithMany("BankaHesaplar")
+                        .HasForeignKey("BankaSubeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.Cariler.Cari", "Cari")
+                        .WithMany("BankaHesaplar")
+                        .HasForeignKey("CariId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1BankaHesaplar")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2BankaHesaplar")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3BankaHesaplar")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4BankaHesaplar")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5BankaHesaplar")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Subeler.Sube", "Sube")
+                        .WithMany("BankaHesaplar")
+                        .HasForeignKey("SubeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BankaSube");
+
+                    b.Navigation("Cari");
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+
+                    b.Navigation("Sube");
+                });
+
             modelBuilder.Entity("ABC.BookStore.BankaSubeler.BankaSube", b =>
                 {
                     b.HasOne("ABC.BookStore.Bankalar.Banka", "Banka")
@@ -2675,6 +4234,44 @@ namespace ABC.BookStore.Migrations
                     b.Navigation("OzelKod5");
                 });
 
+            modelBuilder.Entity("ABC.BookStore.Birimler.Birim", b =>
+                {
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Birimler")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Birimler")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Birimler")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Birimler")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Birimler")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+                });
+
             modelBuilder.Entity("ABC.BookStore.Books.Book", b =>
                 {
                     b.HasOne("ABC.BookStore.Iller.Il", "Il")
@@ -2725,6 +4322,272 @@ namespace ABC.BookStore.Migrations
                     b.Navigation("OzelKod5");
                 });
 
+            modelBuilder.Entity("ABC.BookStore.CariSubeler.CariSube", b =>
+                {
+                    b.HasOne("ABC.BookStore.Cariler.Cari", "Cari")
+                        .WithMany("CariSubeler")
+                        .HasForeignKey("CariId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cari");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Cariler.Cari", b =>
+                {
+                    b.HasOne("ABC.BookStore.Iller.Il", "Il")
+                        .WithMany("Cariler")
+                        .HasForeignKey("IlId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.Ilceler.Ilce", "Ilce")
+                        .WithMany("Cariler")
+                        .HasForeignKey("IlceId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Cariler")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Cariler")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Cariler")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Cariler")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Cariler")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Il");
+
+                    b.Navigation("Ilce");
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Depolar.Depo", b =>
+                {
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Depolar")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Depolar")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Depolar")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Depolar")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Depolar")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Subeler.Sube", "Sube")
+                        .WithMany("Depolar")
+                        .HasForeignKey("SubeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+
+                    b.Navigation("Sube");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Faturalar.Fatura", b =>
+                {
+                    b.HasOne("ABC.BookStore.Cariler.Cari", "Cari")
+                        .WithMany("Faturalar")
+                        .HasForeignKey("CariId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.Depolar.Depo", null)
+                        .WithMany("Faturalar")
+                        .HasForeignKey("DepoId");
+
+                    b.HasOne("ABC.BookStore.Donemler.Donem", "Donem")
+                        .WithMany("Faturalar")
+                        .HasForeignKey("DonemId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Faturalar")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Faturalar")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Faturalar")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Faturalar")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Faturalar")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Subeler.Sube", "Sube")
+                        .WithMany("Faturalar")
+                        .HasForeignKey("SubeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Cari");
+
+                    b.Navigation("Donem");
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+
+                    b.Navigation("Sube");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Faturalar.FaturaHareket", b =>
+                {
+                    b.HasOne("ABC.BookStore.Cariler.Cari", null)
+                        .WithMany("FaturaHareketler")
+                        .HasForeignKey("CariId");
+
+                    b.HasOne("ABC.BookStore.Depolar.Depo", "Depo")
+                        .WithMany("FaturaHareketler")
+                        .HasForeignKey("DepoId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Faturalar.Fatura", "Fatura")
+                        .WithMany("FaturaHareketler")
+                        .HasForeignKey("FaturaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.Hizmetler.Hizmet", "Hizmet")
+                        .WithMany("FaturaHareketler")
+                        .HasForeignKey("HizmetId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Masraflar.Masraf", "Masraf")
+                        .WithMany("FaturaHareketler")
+                        .HasForeignKey("MasrafId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Stoklar.Stok", "Stok")
+                        .WithMany("FaturaHareketler")
+                        .HasForeignKey("StokId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Depo");
+
+                    b.Navigation("Fatura");
+
+                    b.Navigation("Hizmet");
+
+                    b.Navigation("Masraf");
+
+                    b.Navigation("Stok");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Hizmetler.Hizmet", b =>
+                {
+                    b.HasOne("ABC.BookStore.Birimler.Birim", "Birim")
+                        .WithMany("Hizmetler")
+                        .HasForeignKey("BirimId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Hizmetler")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Hizmetler")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Hizmetler")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Hizmetler")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Hizmetler")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Birim");
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+                });
+
             modelBuilder.Entity("ABC.BookStore.Ilceler.Ilce", b =>
                 {
                     b.HasOne("ABC.BookStore.Iller.Il", "Il")
@@ -2734,6 +4597,52 @@ namespace ABC.BookStore.Migrations
                         .IsRequired();
 
                     b.Navigation("Il");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Kasalar.Kasa", b =>
+                {
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Kasalar")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Kasalar")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Kasalar")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Kasalar")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Kasalar")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Subeler.Sube", "Sube")
+                        .WithMany("Kasalar")
+                        .HasForeignKey("SubeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+
+                    b.Navigation("Sube");
                 });
 
             modelBuilder.Entity("ABC.BookStore.Kisiler.Kisi", b =>
@@ -2767,8 +4676,172 @@ namespace ABC.BookStore.Migrations
                     b.Navigation("OzelKod2");
                 });
 
+            modelBuilder.Entity("ABC.BookStore.Makbuzlar.Makbuz", b =>
+                {
+                    b.HasOne("ABC.BookStore.BankaHesaplar.BankaHesap", "BankaHesap")
+                        .WithMany("Makbuzlar")
+                        .HasForeignKey("BankaHesapId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Cariler.Cari", "Cari")
+                        .WithMany("Makbuzlar")
+                        .HasForeignKey("CariId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Donemler.Donem", "Donem")
+                        .WithMany("Makbuzlar")
+                        .HasForeignKey("DonemId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.Kasalar.Kasa", "Kasa")
+                        .WithMany("Makbuzlar")
+                        .HasForeignKey("KasaId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Makbuzlar")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Makbuzlar")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Makbuzlar")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Makbuzlar")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Makbuzlar")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Subeler.Sube", "Sube")
+                        .WithMany("Makbuzlar")
+                        .HasForeignKey("SubeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("BankaHesap");
+
+                    b.Navigation("Cari");
+
+                    b.Navigation("Donem");
+
+                    b.Navigation("Kasa");
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+
+                    b.Navigation("Sube");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Makbuzlar.MakbuzHareket", b =>
+                {
+                    b.HasOne("ABC.BookStore.BankaHesaplar.BankaHesap", "BankaHesap")
+                        .WithMany("MakbuzHareketler")
+                        .HasForeignKey("BankaHesapId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Bankalar.Banka", "CekBanka")
+                        .WithMany("MakbuzHareketler")
+                        .HasForeignKey("CekBankaId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.BankaSubeler.BankaSube", "CekBankaSube")
+                        .WithMany("MakbuzHareketler")
+                        .HasForeignKey("CekBankaSubeId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Kasalar.Kasa", "Kasa")
+                        .WithMany("MakbuzHareketler")
+                        .HasForeignKey("KasaId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.Makbuzlar.Makbuz", "Makbuz")
+                        .WithMany("MakbuzHareketler")
+                        .HasForeignKey("MakbuzId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BankaHesap");
+
+                    b.Navigation("CekBanka");
+
+                    b.Navigation("CekBankaSube");
+
+                    b.Navigation("Kasa");
+
+                    b.Navigation("Makbuz");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Masraflar.Masraf", b =>
+                {
+                    b.HasOne("ABC.BookStore.Birimler.Birim", "Birim")
+                        .WithMany("Masraflar")
+                        .HasForeignKey("BirimId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Masraflar")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Masraflar")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Masraflar")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Masraflar")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Masraflar")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Birim");
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
+                });
+
             modelBuilder.Entity("ABC.BookStore.Parametreler.FirmaParametre", b =>
                 {
+                    b.HasOne("ABC.BookStore.Depolar.Depo", null)
+                        .WithMany("FirmaParametreler")
+                        .HasForeignKey("DepoId");
+
                     b.HasOne("ABC.BookStore.Donemler.Donem", "Donem")
                         .WithMany("FirmaParametreler")
                         .HasForeignKey("DonemId")
@@ -2792,6 +4865,52 @@ namespace ABC.BookStore.Migrations
                     b.Navigation("Sube");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Stoklar.Stok", b =>
+                {
+                    b.HasOne("ABC.BookStore.Birimler.Birim", "Birim")
+                        .WithMany("Stoklar")
+                        .HasForeignKey("BirimId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod1")
+                        .WithMany("OzelKod1Stoklar")
+                        .HasForeignKey("OzelKod1Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod2")
+                        .WithMany("OzelKod2Stoklar")
+                        .HasForeignKey("OzelKod2Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod3")
+                        .WithMany("OzelKod3Stoklar")
+                        .HasForeignKey("OzelKod3Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod4")
+                        .WithMany("OzelKod4Stoklar")
+                        .HasForeignKey("OzelKod4Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("ABC.BookStore.OzelKodlar.OzelKod", "OzelKod5")
+                        .WithMany("OzelKod5Stoklar")
+                        .HasForeignKey("OzelKod5Id")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Birim");
+
+                    b.Navigation("OzelKod1");
+
+                    b.Navigation("OzelKod2");
+
+                    b.Navigation("OzelKod3");
+
+                    b.Navigation("OzelKod4");
+
+                    b.Navigation("OzelKod5");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
@@ -2936,18 +5055,81 @@ namespace ABC.BookStore.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ABC.BookStore.BankaHesaplar.BankaHesap", b =>
+                {
+                    b.Navigation("MakbuzHareketler");
+
+                    b.Navigation("Makbuzlar");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.BankaSubeler.BankaSube", b =>
+                {
+                    b.Navigation("BankaHesaplar");
+
+                    b.Navigation("MakbuzHareketler");
+                });
+
             modelBuilder.Entity("ABC.BookStore.Bankalar.Banka", b =>
                 {
                     b.Navigation("BankaSubeler");
+
+                    b.Navigation("MakbuzHareketler");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Birimler.Birim", b =>
+                {
+                    b.Navigation("Hizmetler");
+
+                    b.Navigation("Masraflar");
+
+                    b.Navigation("Stoklar");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Cariler.Cari", b =>
+                {
+                    b.Navigation("BankaHesaplar");
+
+                    b.Navigation("CariSubeler");
+
+                    b.Navigation("FaturaHareketler");
+
+                    b.Navigation("Faturalar");
+
+                    b.Navigation("Makbuzlar");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Depolar.Depo", b =>
+                {
+                    b.Navigation("FaturaHareketler");
+
+                    b.Navigation("Faturalar");
+
+                    b.Navigation("FirmaParametreler");
                 });
 
             modelBuilder.Entity("ABC.BookStore.Donemler.Donem", b =>
                 {
+                    b.Navigation("Faturalar");
+
                     b.Navigation("FirmaParametreler");
+
+                    b.Navigation("Makbuzlar");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Faturalar.Fatura", b =>
+                {
+                    b.Navigation("FaturaHareketler");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Hizmetler.Hizmet", b =>
+                {
+                    b.Navigation("FaturaHareketler");
                 });
 
             modelBuilder.Entity("ABC.BookStore.Ilceler.Ilce", b =>
                 {
+                    b.Navigation("Cariler");
+
                     b.Navigation("Kisiler");
                 });
 
@@ -2955,51 +5137,185 @@ namespace ABC.BookStore.Migrations
                 {
                     b.Navigation("Books");
 
+                    b.Navigation("Cariler");
+
                     b.Navigation("Ilceler");
 
                     b.Navigation("Kisiler");
                 });
 
+            modelBuilder.Entity("ABC.BookStore.Kasalar.Kasa", b =>
+                {
+                    b.Navigation("MakbuzHareketler");
+
+                    b.Navigation("Makbuzlar");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Makbuzlar.Makbuz", b =>
+                {
+                    b.Navigation("MakbuzHareketler");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Masraflar.Masraf", b =>
+                {
+                    b.Navigation("FaturaHareketler");
+                });
+
             modelBuilder.Entity("ABC.BookStore.OzelKodlar.OzelKod", b =>
                 {
+                    b.Navigation("OzelKod1BankaHesaplar");
+
                     b.Navigation("OzelKod1BankaSubeler");
 
                     b.Navigation("OzelKod1Bankalar");
 
+                    b.Navigation("OzelKod1Birimler");
+
                     b.Navigation("OzelKod1Book");
 
+                    b.Navigation("OzelKod1Cariler");
+
+                    b.Navigation("OzelKod1Depolar");
+
+                    b.Navigation("OzelKod1Faturalar");
+
+                    b.Navigation("OzelKod1Hizmetler");
+
+                    b.Navigation("OzelKod1Kasalar");
+
                     b.Navigation("OzelKod1Kisiler");
+
+                    b.Navigation("OzelKod1Makbuzlar");
+
+                    b.Navigation("OzelKod1Masraflar");
+
+                    b.Navigation("OzelKod1Stoklar");
+
+                    b.Navigation("OzelKod2BankaHesaplar");
 
                     b.Navigation("OzelKod2BankaSubeler");
 
                     b.Navigation("OzelKod2Bankalar");
 
+                    b.Navigation("OzelKod2Birimler");
+
                     b.Navigation("OzelKod2Book");
 
+                    b.Navigation("OzelKod2Cariler");
+
+                    b.Navigation("OzelKod2Depolar");
+
+                    b.Navigation("OzelKod2Faturalar");
+
+                    b.Navigation("OzelKod2Hizmetler");
+
+                    b.Navigation("OzelKod2Kasalar");
+
                     b.Navigation("OzelKod2Kisiler");
+
+                    b.Navigation("OzelKod2Makbuzlar");
+
+                    b.Navigation("OzelKod2Masraflar");
+
+                    b.Navigation("OzelKod2Stoklar");
+
+                    b.Navigation("OzelKod3BankaHesaplar");
 
                     b.Navigation("OzelKod3BankaSubeler");
 
                     b.Navigation("OzelKod3Bankalar");
 
+                    b.Navigation("OzelKod3Birimler");
+
                     b.Navigation("OzelKod3Book");
+
+                    b.Navigation("OzelKod3Cariler");
+
+                    b.Navigation("OzelKod3Depolar");
+
+                    b.Navigation("OzelKod3Faturalar");
+
+                    b.Navigation("OzelKod3Hizmetler");
+
+                    b.Navigation("OzelKod3Kasalar");
+
+                    b.Navigation("OzelKod3Makbuzlar");
+
+                    b.Navigation("OzelKod3Masraflar");
+
+                    b.Navigation("OzelKod3Stoklar");
+
+                    b.Navigation("OzelKod4BankaHesaplar");
 
                     b.Navigation("OzelKod4BankaSubeler");
 
                     b.Navigation("OzelKod4Bankalar");
 
+                    b.Navigation("OzelKod4Birimler");
+
                     b.Navigation("OzelKod4Book");
+
+                    b.Navigation("OzelKod4Cariler");
+
+                    b.Navigation("OzelKod4Depolar");
+
+                    b.Navigation("OzelKod4Faturalar");
+
+                    b.Navigation("OzelKod4Hizmetler");
+
+                    b.Navigation("OzelKod4Kasalar");
+
+                    b.Navigation("OzelKod4Makbuzlar");
+
+                    b.Navigation("OzelKod4Masraflar");
+
+                    b.Navigation("OzelKod4Stoklar");
+
+                    b.Navigation("OzelKod5BankaHesaplar");
 
                     b.Navigation("OzelKod5BankaSubeler");
 
                     b.Navigation("OzelKod5Bankalar");
 
+                    b.Navigation("OzelKod5Birimler");
+
                     b.Navigation("OzelKod5Book");
+
+                    b.Navigation("OzelKod5Cariler");
+
+                    b.Navigation("OzelKod5Depolar");
+
+                    b.Navigation("OzelKod5Faturalar");
+
+                    b.Navigation("OzelKod5Hizmetler");
+
+                    b.Navigation("OzelKod5Kasalar");
+
+                    b.Navigation("OzelKod5Makbuzlar");
+
+                    b.Navigation("OzelKod5Masraflar");
+
+                    b.Navigation("OzelKod5Stoklar");
+                });
+
+            modelBuilder.Entity("ABC.BookStore.Stoklar.Stok", b =>
+                {
+                    b.Navigation("FaturaHareketler");
                 });
 
             modelBuilder.Entity("ABC.BookStore.Subeler.Sube", b =>
                 {
+                    b.Navigation("BankaHesaplar");
+
+                    b.Navigation("Depolar");
+
+                    b.Navigation("Faturalar");
+
                     b.Navigation("FirmaParemetreler");
+
+                    b.Navigation("Kasalar");
+
+                    b.Navigation("Makbuzlar");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
